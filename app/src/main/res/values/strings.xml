@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Campus02ASY</string>
+    <string name="action_settings">Campus02 Homepage</string>
+    <string name="main_text_title">HELLO MOBILE WORLD!</string>
+    <string name="main_infotext">Geben Sie bitte Ihren Vornamen ein:</string>
+    <string name="main_info_alter">Geben Sie Ihr Alter ein:</string>
+    <string name="main_button_next">Spiel Starten</string>
+    <string name="game_text_title">Campus02 Fragequiz</string>
+    <string name="game_button_next">Nächste Frage</string>
+    <string name="final_button_text">Spiel beenden</string>
+
+</resources>
