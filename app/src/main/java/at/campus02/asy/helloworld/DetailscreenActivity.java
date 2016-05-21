@@ -45,7 +45,7 @@ public class DetailscreenActivity extends AppCompatActivity
 
     ElearningService service = retrofit.create(ElearningService.class);
 
-    service.list().enqueue(new Callback<List<Question>>() {
+    /*service.list().enqueue(new Callback<List<Question>>() {
         @Override
         public void onResponse(Call<List<Question>> call, Response<List<Question>> response) {
             ((TextView)findViewById(R.id.frage)).setText("Hello World " + response.body().size());
@@ -55,7 +55,7 @@ public class DetailscreenActivity extends AppCompatActivity
         public void onFailure(Call<List<Question>> call, Throwable t) {
 
         }
-    });
+    });*/
 
 
 
