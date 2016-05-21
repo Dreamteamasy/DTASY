@@ -115,4 +115,14 @@
         android:paddingBottom="10dp"
         android:layout_below="@+id/bild" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Frage erstellen"
+        android:id="@+id/frageErstellen"
+        android:textSize="20dp"
+        android:layout_below="@+id/bildView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp" />
+
 </RelativeLayout>
