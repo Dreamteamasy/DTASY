@@ -1,5 +1,6 @@
 package at.campus02.asy.helloworld;
 
+import android.Manifest;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -15,6 +16,8 @@ import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
 
 public class MainActivity extends AppCompatActivity {
+
+
 
     private String recipient = "info@campus02.at";
     /**
@@ -112,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     // send E-mail to the given recipient(s) with dummy text
-    protected void sendEmail() {
+    /*protected void sendEmail() {
 
         String[] recipients = {recipient};
         Intent email = new Intent(Intent.ACTION_SEND, Uri.parse("mailto:"));
@@ -129,7 +132,7 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(MainActivity.this, "Kein E-Mailclient installiert!",
                     Toast.LENGTH_LONG).show();
         }
-    }
+    }*/
 
 
 
