@@ -1,6 +1,6 @@
 package at.campus02.asy.helloworld;
 
-import android.Manifest;
+
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -16,8 +16,6 @@ import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
 
 public class MainActivity extends AppCompatActivity {
-
-
 
     private String recipient = "info@campus02.at";
     /**
