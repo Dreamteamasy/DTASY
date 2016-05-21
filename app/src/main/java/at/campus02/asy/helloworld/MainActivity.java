@@ -25,7 +25,6 @@ import java.net.UnknownHostException;
 
 public class MainActivity extends AppCompatActivity {
 
-    private String recipient = "info@campus02.at";
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -33,14 +32,6 @@ public class MainActivity extends AppCompatActivity {
     private GoogleApiClient client;
 
     public boolean isNetworkAvailable(final Context context) {
-
-        if (isNetworkAvailable(context)) {
-            // code here
-        } else {
-            Toast errorToast = Toast.makeText(getApplicationContext(),
-                    "Kein Internet vorhanden", Toast.LENGTH_LONG);
-            errorToast.show();
-        }
 
         final ConnectivityManager connectivityManager = ((ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE));
         return connectivityManager.getActiveNetworkInfo() != null && connectivityManager.getActiveNetworkInfo().isConnected();
@@ -53,21 +44,14 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        //get resources and init UI
-        //etName = (EditText) findViewById(R.id.et_name);
-        //etAge = (EditText) findViewById(R.id.et_age);
+        if (isNetworkAvailable(getBaseContext())) {
+            // code here
+        } else {
+            Toast errorToast = Toast.makeText(getApplicationContext(),
+                    "Kein Internet vorhanden", Toast.LENGTH_LONG);
+            errorToast.show();
+        }
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        /*fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //send Email to recipient address
-                sendEmail();
-                //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show();
-            }
-        });*/
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
 
@@ -77,24 +61,6 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
-
-    /*public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            // forward to InfoActivity with intent
-            Intent forwardToInfo = new Intent(this,InfoActivity.class);
-            startActivity(forwardToInfo);
-
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }*/
 
     // button next onClick Handler
     public void frageAnzeigen(View view) {
@@ -114,46 +80,6 @@ public class MainActivity extends AppCompatActivity {
         Intent intentGame = new Intent(this, SettingsActivity.class);
         startActivity(intentGame);
     }
-
-    /*// check if the name and age etitText fields are not empty
-    private boolean inputIsValid() {
-        if ((etName.getText().toString().length() == 0) || (etAge.getText().toString().length() == 0)) {
-            Log.d("MainActivity", "ValidationError Name: " + etName.getText().toString() +
-                    " Age: " + etAge.getText().toString());
-            // create errorToast Message and show it
-            Toast errorToast = Toast.makeText(getApplicationContext(),
-                    "Geben Sie bitte Ihren Vornamen und Ihr Alter ein!", Toast.LENGTH_LONG);
-            errorToast.show();
-            return false;
-        } else {
-            Log.d("MainActivity", "Validation OK");
-            return true;
-        }
-    }*/
-
-
-
-
-    // send E-mail to the given recipient(s) with dummy text
-    /*protected void sendEmail() {
-
-        String[] recipients = {recipient};
-        Intent email = new Intent(Intent.ACTION_SEND, Uri.parse("mailto:"));
-
-        // prompts email clients only
-        email.setType("message/rfc822");
-        email.putExtra(Intent.EXTRA_EMAIL, recipients);
-        email.putExtra(Intent.EXTRA_SUBJECT, "Anfrage von der Campus02 App");
-        email.putExtra(Intent.EXTRA_TEXT, "Anfragetext ...");
-        try {
-            // the user can choose the email client
-            startActivity(Intent.createChooser(email, "Wählen Sie einen E-Mailclient aus."));
-        } catch (android.content.ActivityNotFoundException ex) {
-            Toast.makeText(MainActivity.this, "Kein E-Mailclient installiert!",
-                    Toast.LENGTH_LONG).show();
-        }
-    }*/
-
 
 
     @Override
