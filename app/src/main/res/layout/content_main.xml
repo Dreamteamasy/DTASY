@@ -30,73 +30,38 @@
         android:paddingTop="10dp"
         android:layout_centerHorizontal="true" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="18dp"
-        android:text="@string/main_infotext"
-        android:id="@+id/tv_info"
-        android:layout_below="@+id/iv_logo"
-        android:layout_centerHorizontal="true"
-        android:paddingTop="20dp"
-        android:gravity="center"
-        android:textColor="@color/campus02_blue"
-        android:background="@color/white"
-        android:paddingBottom="5dp" />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:textSize="18dp"
-        android:id="@+id/et_name"
-        android:layout_below="@+id/tv_info"
-        android:layout_centerHorizontal="true"
-        android:gravity="center"
-        android:paddingTop="20dip"
-        android:paddingBottom="20dip"
-        android:background="@color/yellow"
-        android:textColor="@color/campus02_blue" />
-
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="18dp"
-        android:id="@+id/tv_alter"
-        android:text="@string/main_info_alter"
-        android:layout_below="@+id/et_name"
-        android:layout_centerHorizontal="true"
-        android:paddingTop="20dp"
-        android:gravity="center"
-        android:textColor="@color/campus02_blue"
-        android:background="@color/white"
-        android:paddingBottom="5dp" />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        android:textSize="18dp"
-        android:id="@+id/et_age"
-        android:layout_below="@+id/tv_alter"
-        android:layout_centerHorizontal="true"
-        android:gravity="center"
-        android:paddingTop="20dip"
-        android:paddingBottom="20dip"
-        android:background="@color/yellow"
-        android:textColor="@color/campus02_blue" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/main_button_next"
-        android:id="@+id/button_next"
-        android:layout_below="@+id/et_age"
+        android:text="Frage anzeigen"
+        android:id="@+id/frageAnzeigen"
         android:layout_centerHorizontal="true"
         android:paddingTop="20dp"
         android:paddingBottom="20dp"
-        android:onClick="goNext"/>
+        android:onClick="frageAnzeigen"
+        android:layout_marginTop="150dp"/>
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Frage erstellen"
+        android:id="@+id/frageErstellen"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:onClick="frageErstellen"
+        android:layout_marginTop="250dp"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Einstellungen"
+        android:id="@+id/einstellungen"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:onClick="einstellungen"
+        android:layout_marginTop="350dp"/>
 
 </RelativeLayout>

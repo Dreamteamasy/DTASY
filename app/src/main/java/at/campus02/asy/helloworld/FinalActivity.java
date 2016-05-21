@@ -19,8 +19,8 @@ public class FinalActivity extends AppCompatActivity {
 
         // get name and age from Intent
         Bundle extras = getIntent().getExtras();
-        String name = extras.getString("GameActivity.Name");
-        String highScore = extras.getString("GameActivity.HighScore");
+        String name = extras.getString("FrageAnzeigenActivity.Name");
+        String highScore = extras.getString("FrageAnzeigenActivity.HighScore");
         //Log
         Log.d("FinalActivity", "Name: " + name+" Highscore: " + highScore);
 

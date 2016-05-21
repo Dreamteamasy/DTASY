@@ -4,15 +4,10 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.EditText;
-import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.gms.appindexing.Action;
@@ -21,8 +16,6 @@ import com.google.android.gms.common.api.GoogleApiClient;
 
 public class MainActivity extends AppCompatActivity {
 
-    private EditText etName;
-    private EditText etAge;
     private String recipient = "info@campus02.at";
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -38,8 +31,8 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         //get resources and init UI
-        etName = (EditText) findViewById(R.id.et_name);
-        etAge = (EditText) findViewById(R.id.et_age);
+        //etName = (EditText) findViewById(R.id.et_name);
+        //etAge = (EditText) findViewById(R.id.et_age);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -62,8 +55,7 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    /*public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
@@ -79,24 +71,28 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
+    }*/
 
     // button next onClick Handler
-    public void goNext(View view) {
+    public void frageAnzeigen(View view) {
         //validate input
-        if(inputIsValid()==true) {
-            // get data and forward to next activity
-            //Intent
-            Intent intentGame = new Intent(this, GameActivity.class);
-            //save name and age in intent
-            intentGame.putExtra("MainActivity.Name", etName.getText().toString());
-            intentGame.putExtra("MainActivity.Age", etAge.getText().toString());
-            startActivity(intentGame);
-        }
-
+        Intent intentGame = new Intent(this, FrageAnzeigenActivity.class);
+        startActivity(intentGame);
     }
 
-    // check if the name and age etitText fields are not empty
+    public void frageErstellen(View view) {
+        //validate input
+        Intent intentGame = new Intent(this, FrageErstellenActivity.class);
+        startActivity(intentGame);
+    }
+
+    public void einstellungen(View view) {
+        //validate input
+        Intent intentGame = new Intent(this, SettingsActivity.class);
+        startActivity(intentGame);
+    }
+
+    /*// check if the name and age etitText fields are not empty
     private boolean inputIsValid() {
         if ((etName.getText().toString().length() == 0) || (etAge.getText().toString().length() == 0)) {
             Log.d("MainActivity", "ValidationError Name: " + etName.getText().toString() +
@@ -110,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
             Log.d("MainActivity", "Validation OK");
             return true;
         }
-    }
+    }*/
 
 
 
