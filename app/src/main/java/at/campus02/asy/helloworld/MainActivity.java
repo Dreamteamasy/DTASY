@@ -9,7 +9,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
-import android.widget.Toast;
 
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
@@ -89,8 +88,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void einstellungen(View view) {
         //validate input
-        Intent intentGame = new Intent(this, SettingsActivity.class);
-        startActivity(intentGame);
+        Intent intentEinstellungen = new Intent(this, EinstellungenActivity.class);
+        startActivity(intentEinstellungen);
     }
 
     /*// check if the name and age etitText fields are not empty
