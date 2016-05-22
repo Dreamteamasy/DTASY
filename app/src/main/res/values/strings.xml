@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Campus02ASY</string>
+    <string name="app_name">DT-Learning-App</string>
     <string name="action_settings">Campus02 Homepage</string>
     <string name="main_text_title">Learning-App</string>
     <string name="main_infotext">Geben Sie bitte Ihren Vornamen ein:</string>
@@ -9,7 +9,12 @@
     <string name="game_button_next">Nächste Frage</string>
     <string name="final_button_text">Spiel beenden</string>
     <string name="title_activity_frage_erstellen">FrageErstellenActivity</string>
-    <string name="title_activity_settings">Settings</string>
+    <string name="title_activity_settings">Einstellungen</string>
+    <string name="einst_btn_maxfragen">Max. Fragen pro Runde</string>
+    <string name="einst_btn_umkreis">GPS - Umkreis x km</string>
+    <string name="einst_btn_user">Benutzername</string>
+    <string name="einst_btn_schwierigkeit">Schwierigkeitsgrad</string>
+    <string name="einst_btn_save">Einstellungen speichern</string>
 
     <!-- Strings related to Settings -->
 

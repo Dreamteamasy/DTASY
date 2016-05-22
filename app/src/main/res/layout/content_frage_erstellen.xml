@@ -51,7 +51,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Schwierigkeitsgrad"
-        android:id="@+id/schwierigkeitsgrad"
+        android:id="@+id/btn_schwierigkeitsgrad"
         android:textSize="20dp"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/antwortText" />
@@ -60,7 +60,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/schwierigkeitsgradText"
-        android:layout_below="@+id/schwierigkeitsgrad"
+        android:layout_below="@+id/btn_schwierigkeitsgrad"
         android:layout_centerHorizontal="true" />
 
     <TextView
