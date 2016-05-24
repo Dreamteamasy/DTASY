@@ -18,9 +18,11 @@
         android:layout_height="wrap_content"
         android:text="@string/main_text_title"
         android:id="@+id/tv_title"
-        style="@style/Heading1" />
+        style="@style/Heading1"
+        android:textSize="50dp"
+        android:textStyle="bold|italic" />
 
-    <ImageView
+    <!--<ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/iv_logo"
@@ -28,13 +30,13 @@
         android:src="@drawable/campus02_logo"
         android:adjustViewBounds="true"
         android:paddingTop="10dp"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true" />-->
 
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Frage anzeigen"
+        android:text="@string/frage_anzeigen_btn"
         android:id="@+id/frageAnzeigen"
         android:layout_centerHorizontal="true"
         android:paddingTop="20dp"
@@ -45,7 +47,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Frage erstellen"
+        android:text="@string/frage_erstellen_btn"
         android:id="@+id/frageErstellen"
         android:layout_centerHorizontal="true"
         android:paddingTop="20dp"
@@ -56,7 +58,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Einstellungen"
+        android:text="@string/einstellungen_btn"
         android:id="@+id/einstellungen"
         android:layout_centerHorizontal="true"
         android:paddingTop="20dp"

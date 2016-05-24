@@ -118,7 +118,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Frage erstellen"
+        android:text="@string/frage_erstellen_btn"
         android:id="@+id/frageErstellen"
         android:textSize="20dp"
         android:layout_below="@+id/bildView"

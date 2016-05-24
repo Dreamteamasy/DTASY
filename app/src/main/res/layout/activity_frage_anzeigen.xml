@@ -14,9 +14,9 @@
 
 
     <Button
-        android:layout_width="200dp"
+        android:layout_width="300dp"
         android:layout_height="70dp"
-        android:text="Alle Kategorien"
+        android:text="@string/alle_kaetg_btn"
         android:id="@+id/alleKategorien"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="50dp"
@@ -24,9 +24,9 @@
         android:textSize="20dp" />
 
     <Button
-        android:layout_width="200dp"
+        android:layout_width="300dp"
         android:layout_height="70dp"
-        android:text="Kategorie..."
+        android:text="@string/eine_kateg_btn"
         android:id="@+id/kategorie"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="50dp"
@@ -34,9 +34,9 @@
         android:onClick="kategorie"/>
 
     <Button
-        android:layout_width="200dp"
+        android:layout_width="300dp"
         android:layout_height="70dp"
-        android:text="Frage in der Umgebung"
+        android:text="@string/umgebung_kateg_btn"
         android:id="@+id/umgebung"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="50dp"

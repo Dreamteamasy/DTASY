@@ -1,20 +1,20 @@
 <resources>
     <string name="app_name">DT-Learning-App</string>
     <string name="action_settings">Campus02 Homepage</string>
-    <string name="main_text_title">Learning-App</string>
-    <string name="main_infotext">Geben Sie bitte Ihren Vornamen ein:</string>
-    <string name="main_info_alter">Geben Sie Ihr Alter ein:</string>
-    <string name="main_button_next">Spiel Starten</string>
-    <string name="game_text_title">Campus02 Fragequiz</string>
-    <string name="game_button_next">Nächste Frage</string>
-    <string name="final_button_text">Spiel beenden</string>
-    <string name="title_activity_frage_erstellen">FrageErstellenActivity</string>
-    <string name="title_activity_settings">Einstellungen</string>
+    <string name="main_text_title">DreamTeam Learning-App</string>
+    <string name="einstellungen_btn">Einstellungen</string>
     <string name="einst_btn_maxfragen">Max. Fragen pro Runde</string>
     <string name="einst_btn_umkreis">GPS - Umkreis x km</string>
     <string name="einst_btn_user">Benutzername</string>
     <string name="einst_btn_schwierigkeit">Schwierigkeitsgrad</string>
     <string name="einst_btn_save">Einstellungen speichern</string>
+    <string name="einblenden">Antwort einblenden</string>
+    <string name="ausblenden">Antwort ausblenden</string>
+    <string name="frage_erstellen_btn">Frage erstellen</string>
+    <string name="frage_anzeigen_btn">Frage anzeigen</string>
+    <string name="alle_kaetg_btn">Alle Kategorien</string>
+    <string name="eine_kateg_btn">Kategorie...</string>
+    <string name="umgebung_kateg_btn">Frage in der Umgebung</string>
 
     <!-- Strings related to Settings -->
 
