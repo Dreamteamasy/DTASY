@@ -41,19 +41,21 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
-        <activity android:name=".InfoActivity"
-            android:label="@string/app_name"/>
+        <activity android:name=".InfoActivity" />
+        <activity android:name=".FinalActivity" />
         <activity
             android:name=".FrageErstellenActivity"
-            android:label="@string/app_name"
+            android:label="@string/title_activity_frage_erstellen"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".EinstellungenActivity"
-            android:label="@string/app_name" />
+            android:label="@string/title_activity_settings" />
         <activity
             android:name=".DetailscreenActivity"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:label="@string/title_activity_detailscreen"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".MaxFragenActivity" />
+        <activity android:name=".BenutzernameActivity" />
     </application>
 
 </manifest>

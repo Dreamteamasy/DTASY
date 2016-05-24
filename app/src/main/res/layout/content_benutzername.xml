@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/campus02_yellow"
+    android:paddingLeft="16dp"
+    android:paddingBottom="16dp"
+    android:paddingTop="16dp"
+    android:paddingRight="16dp"
+    tools:context=".BenutzernameActivity"
+    tools:showIn="@layout/activity_benutzername"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txt_benutzername"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:background="@color/lightgrey"
+        android:paddingBottom="20dp"
+        android:paddingTop="20dp"
+        android:textAlignment="center"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Einstellungen speichern"
+        android:id="@+id/btn_benutzernamespeichern"
+        android:layout_below="@+id/txt_benutzername"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:paddingBottom="20dp"
+        android:paddingTop="20dp"
+        android:background="@color/green"
+        android:onClick="benutzernamespeichern"/>
+</RelativeLayout>

@@ -1,6 +1,5 @@
 package at.campus02.asy.helloworld;
 
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -16,7 +15,7 @@ public class EinstellungenActivity extends AppCompatActivity {
     }
 
     public void maxfragen(View view) {
-        Intent intentFragen = new Intent(this, DetailscreenActivity.class);
+        Intent intentFragen = new Intent(this, MaxFragenActivity.class);
         startActivity(intentFragen);
     }
 
@@ -26,7 +25,7 @@ public class EinstellungenActivity extends AppCompatActivity {
     }
 
     public void benutzername(View view) {
-        Intent intentUser = new Intent(this, DetailscreenActivity.class);
+        Intent intentUser = new Intent(this, BenutzernameActivity.class);
         startActivity(intentUser);
     }
 
