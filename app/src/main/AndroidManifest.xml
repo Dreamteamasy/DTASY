@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="at.campus02.asy.helloworld">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -17,7 +18,8 @@
         android:icon="@drawable/campus02_logo"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:targetApi="donut">
         <!--    android:icon="@mipmap/dt_app_icon"-->
         <activity
             android:name=".MainActivity"
@@ -43,7 +45,6 @@
             android:value="@integer/google_play_services_version" />
 
         <activity android:name=".InfoActivity" />
-        <activity android:name=".FinalActivity" />
         <activity
             android:name=".FrageErstellenActivity"
             android:label="@string/title_activity_frage_erstellen"
@@ -54,7 +55,7 @@
         <activity
             android:name=".DetailscreenActivity"
             android:label="@string/title_activity_detailscreen"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".MaxFragenActivity" />
         <activity android:name=".BenutzernameActivity" />
         <activity android:name=".SchwierigkeitsgradActivity" />
