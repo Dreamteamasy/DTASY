@@ -36,7 +36,7 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/txt_benutzername"
+                android:id="@+id/edit_benutzername"
                 android:layout_below="@id/txt_welchername"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="25dp"
@@ -47,15 +47,15 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Einstellungen speichern"
+                android:text="@string/speichern"
                 android:id="@+id/btn_benutzernamespeichern"
-                android:layout_below="@+id/txt_benutzername"
+                android:layout_below="@+id/edit_benutzername"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="25dp"
                 android:paddingBottom="20dp"
                 android:paddingTop="20dp"
                 android:background="@color/green"
-                android:onClick="benutzernamespeichern"/>
+                android:textSize="20dp"/>
         </RelativeLayout>
     </ScrollView>
 </RelativeLayout>

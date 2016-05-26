@@ -1,7 +1,9 @@
 package at.campus02.asy.helloworld;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
@@ -34,13 +36,13 @@ public class EinstellungenActivity extends AppCompatActivity {
         startActivity(intentSchwierigkeitsgrad);
     }
 
-    public void speichern(View view) {
-        //Button Action
-        String infoText = "Die Einstellungen wurden gespeichert";
-        Toast infoToast = Toast.makeText(getApplicationContext(), infoText, Toast.LENGTH_SHORT);
-        infoToast.show();
+//    public void speichern(View view) {
+//        //Button Action
+//        String infoText = "Die Einstellungen wurden gespeichert";
+//        Toast infoToast = Toast.makeText(getApplicationContext(), infoText, Toast.LENGTH_SHORT);
+//        infoToast.show();
 
-        Intent intentSpeichern = new Intent(this, MainActivity.class);
-        startActivity(intentSpeichern);
-    }
+//        Intent intentSpeichern = new Intent(this, MainActivity.class);
+//        startActivity(intentSpeichern);
+//    }
 }
