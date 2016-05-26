@@ -5,47 +5,57 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/campus02_yellow"
-    android:paddingLeft="16dp"
-    android:paddingBottom="16dp"
-    android:paddingTop="16dp"
-    android:paddingRight="16dp"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
     tools:context=".BenutzernameActivity"
     tools:showIn="@layout/activity_benutzername"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Bitte gib deinen Spielernamen an:"
-        android:id="@+id/txt_welchername"
-        android:layout_centerHorizontal="true"
-        android:textAlignment="center"
-        android:textSize="20dp"
-        android:layout_marginTop="50dp"
-        android:paddingBottom="20dp"
-        android:paddingTop="20dp"/>
+        android:layout_height="match_parent">
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/txt_benutzername"
-        android:layout_below="@id/txt_welchername"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:paddingBottom="20dp"
-        android:paddingTop="20dp"
-        android:textAlignment="center"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Einstellungen speichern"
-        android:id="@+id/btn_benutzernamespeichern"
-        android:layout_below="@+id/txt_benutzername"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
-        android:paddingBottom="20dp"
-        android:paddingTop="20dp"
-        android:background="@color/green"
-        android:onClick="benutzernamespeichern"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Bitte gib deinen Spielernamen an:"
+                android:id="@+id/txt_welchername"
+                android:layout_centerHorizontal="true"
+                android:textAlignment="center"
+                android:textSize="20dp"
+                android:layout_marginTop="25dp"
+                android:paddingBottom="20dp"
+                android:paddingTop="20dp"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/txt_benutzername"
+                android:layout_below="@id/txt_welchername"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="25dp"
+                android:paddingBottom="20dp"
+                android:paddingTop="20dp"
+                android:textAlignment="center"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Einstellungen speichern"
+                android:id="@+id/btn_benutzernamespeichern"
+                android:layout_below="@+id/txt_benutzername"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="25dp"
+                android:paddingBottom="20dp"
+                android:paddingTop="20dp"
+                android:background="@color/green"
+                android:onClick="benutzernamespeichern"/>
+        </RelativeLayout>
+    </ScrollView>
 </RelativeLayout>

@@ -5,82 +5,93 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/campus02_yellow"
-    android:paddingLeft="16dp"
-    android:paddingBottom="16dp"
-    android:paddingTop="16dp"
-    android:paddingRight="16dp"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
     tools:context=".SchwierigkeitsgradActivity"
     tools:showIn="activity_schwierigkeitsgrad"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     android:orientation="vertical">
 
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Wie schwer sollen die Fragen sein?"
-        android:id="@+id/txt_fragenwieschwer"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:textAlignment="center"
-        android:textSize="20dp"
-        android:paddingBottom="20dp"
-        android:paddingTop="20dp"/>
+        android:layout_height="match_parent">
 
-    <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingLeft="100dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical">
 
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="leicht (Stufe 0)"
-            android:id="@+id/radstufe0"
-            android:layout_below="@+id/txt_fragenwieschwer"
-            android:layout_alignStart="@+id/radstufe3"
-            android:layout_marginTop="20dp"
-            android:onClick="schwierigkeitsgradspeichern"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Wie schwer sollen die Fragen sein?"
+                android:id="@+id/txt_fragenwieschwer"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="25dp"
+                android:textAlignment="center"
+                android:textSize="20dp"
+                android:paddingBottom="20dp"
+                android:paddingTop="20dp"/>
 
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="normal (Stufe 1)"
-            android:id="@+id/radstufe1"
-            android:layout_marginTop="20dp"
-            android:layout_below="@+id/radstufe0"
-            android:layout_alignStart="@+id/radstufe0"
-            android:onClick="schwierigkeitsgradspeichern"/>
+            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="100dp">
 
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="schwer (Stufe 2)"
-            android:id="@+id/radstufe2"
-            android:layout_below="@+id/radstufe1"
-            android:layout_alignStart="@+id/radstufe1"
-            android:layout_marginTop="20dp"
-            android:onClick="schwierigkeitsgradspeichern"/>
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="leicht (Stufe 0)"
+                    android:id="@+id/radstufe0"
+                    android:layout_below="@+id/txt_fragenwieschwer"
+                    android:layout_alignStart="@+id/radstufe3"
+                    android:layout_marginTop="25dp"
+                    android:onClick="schwierigkeitsgradspeichern"/>
 
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="sehr schwer (Stufe 3)"
-            android:id="@+id/radstufe3"
-            android:layout_below="@+id/radstufe2"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
-            android:onClick="schwierigkeitsgradspeichern" />
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="normal (Stufe 1)"
+                    android:id="@+id/radstufe1"
+                    android:layout_marginTop="25dp"
+                    android:layout_below="@+id/radstufe0"
+                    android:layout_alignStart="@+id/radstufe0"
+                    android:onClick="schwierigkeitsgradspeichern"/>
 
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="alle Stufen"
-            android:id="@+id/radstufeall"
-            android:layout_marginTop="20dp"
-            android:layout_below="@+id/radstufe3"
-            android:layout_alignStart="@+id/radstufe3"
-            android:onClick="schwierigkeitsgradspeichern"
-            android:checked="true"/>
-    </RadioGroup>
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="schwer (Stufe 2)"
+                    android:id="@+id/radstufe2"
+                    android:layout_below="@+id/radstufe1"
+                    android:layout_alignStart="@+id/radstufe1"
+                    android:layout_marginTop="25dp"
+                    android:onClick="schwierigkeitsgradspeichern"/>
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="sehr schwer (Stufe 3)"
+                    android:id="@+id/radstufe3"
+                    android:layout_below="@+id/radstufe2"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="25dp"
+                    android:onClick="schwierigkeitsgradspeichern" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="alle Stufen"
+                    android:id="@+id/radstufeall"
+                    android:layout_marginTop="25dp"
+                    android:layout_below="@+id/radstufe3"
+                    android:layout_alignStart="@+id/radstufe3"
+                    android:onClick="schwierigkeitsgradspeichern"
+                    android:checked="true"/>
+            </RadioGroup>
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>
