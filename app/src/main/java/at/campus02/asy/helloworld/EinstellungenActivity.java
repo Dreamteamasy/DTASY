@@ -20,7 +20,7 @@ public class EinstellungenActivity extends AppCompatActivity {
     }
 
     public void umkreis(View view) {
-        Intent intentUmkreis = new Intent(this, DetailscreenActivity.class);
+        Intent intentUmkreis = new Intent(this, UmkreisActivity.class);
         startActivity(intentUmkreis);
     }
 
@@ -30,13 +30,13 @@ public class EinstellungenActivity extends AppCompatActivity {
     }
 
     public void schwierigkeitsgrad(View view) {
-        Intent intentSchwierigkeitsgrad = new Intent(this, DetailscreenActivity.class);
+        Intent intentSchwierigkeitsgrad = new Intent(this, SchwierigkeitsgradActivity.class);
         startActivity(intentSchwierigkeitsgrad);
     }
 
     public void speichern(View view) {
         //Button Action
-        String infoText = "Ihre Einstellungen wurden gespeichert";
+        String infoText = "Die Einstellungen wurden gespeichert";
         Toast infoToast = Toast.makeText(getApplicationContext(), infoText, Toast.LENGTH_SHORT);
         infoToast.show();
 

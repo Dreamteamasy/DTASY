@@ -18,7 +18,7 @@ public class BenutzernameActivity extends AppCompatActivity {
     }
 
     public void benutzernamespeichern(View view) {
-        String infoText = "Ihre Einstellungen wurden gespeichert";
+        String infoText = "Die Einstellungen wurden gespeichert";
         Toast infoToast = Toast.makeText(getApplicationContext(), infoText, Toast.LENGTH_SHORT);
         infoToast.show();
 

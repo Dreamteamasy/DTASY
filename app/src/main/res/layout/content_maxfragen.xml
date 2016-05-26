@@ -13,15 +13,27 @@
     tools:showIn="@layout/activity_maxfragen"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Wie viele Runden willst du spielen?"
+        android:id="@+id/txt_wievielefragen"
+        android:layout_centerHorizontal="true"
+        android:textAlignment="center"
+        android:textSize="20dp"
+        android:layout_marginTop="50dp"
+        android:paddingBottom="20dp"
+        android:paddingTop="20dp"/>
+
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="number"
         android:ems="10"
         android:id="@+id/txt_maxfragen"
+        android:layout_below="@id/txt_wievielefragen"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
-        android:background="@color/lightgrey"
+        android:layout_marginTop="20dp"
         android:paddingBottom="20dp"
         android:paddingTop="20dp"
         android:textAlignment="center"/>
@@ -38,4 +50,5 @@
         android:paddingTop="20dp"
         android:paddingBottom="20dp"
         android:onClick="maxfragenspeichern"/>
+
 </RelativeLayout>

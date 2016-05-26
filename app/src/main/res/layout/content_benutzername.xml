@@ -13,13 +13,25 @@
     tools:showIn="@layout/activity_benutzername"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Bitte gib deinen Spielernamen an:"
+        android:id="@+id/txt_welchername"
+        android:layout_centerHorizontal="true"
+        android:textAlignment="center"
+        android:textSize="20dp"
+        android:layout_marginTop="50dp"
+        android:paddingBottom="20dp"
+        android:paddingTop="20dp"/>
+
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/txt_benutzername"
+        android:layout_below="@id/txt_welchername"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
-        android:background="@color/lightgrey"
+        android:layout_marginTop="20dp"
         android:paddingBottom="20dp"
         android:paddingTop="20dp"
         android:textAlignment="center"/>

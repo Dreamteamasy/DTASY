@@ -7,23 +7,21 @@ import android.view.View;
 import android.widget.Toast;
 
 /**
- * Created by Admin on 23.05.2016.
+ * Created by Admin on 26.05.2016.
  */
-public class MaxFragenActivity extends AppCompatActivity {
+public class UmkreisActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_maxfragen);
+        setContentView(R.layout.activity_umkreis);
     }
-
-    public void maxfragenspeichern(View view){
-        //Button Action
-        String infoText = "Die Einstellungen wurden gespeichert";
+    public void umkreiszwischenspeichern(View view) {
+        String infoText = "Eingabe wurde zwischengespeichert";
         Toast infoToast = Toast.makeText(getApplicationContext(), infoText, Toast.LENGTH_SHORT);
         infoToast.show();
 
-        Intent intentMaxFragenSave = new Intent(this, EinstellungenActivity.class);
-        startActivity(intentMaxFragenSave);
+        Intent intentumkreis = new Intent(this, EinstellungenActivity.class);
+        startActivity(intentumkreis);
     }
 }

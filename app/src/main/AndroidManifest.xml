@@ -14,10 +14,11 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/dt_app_icon"
+        android:icon="@drawable/campus02_logo"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <!--    android:icon="@mipmap/dt_app_icon"-->
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
@@ -56,6 +57,8 @@
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name=".MaxFragenActivity" />
         <activity android:name=".BenutzernameActivity" />
+        <activity android:name=".SchwierigkeitsgradActivity" />
+        <activity android:name=".UmkreisActivity" />
     </application>
 
 </manifest>
