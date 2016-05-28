@@ -36,6 +36,7 @@
                 android:paddingTop="20dp"/>
 
             <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/radgrp_schwierigkeit"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -48,8 +49,7 @@
                     android:id="@+id/radstufe0"
                     android:layout_below="@+id/txt_fragenwieschwer"
                     android:layout_alignStart="@+id/radstufe3"
-                    android:layout_marginTop="25dp"
-                    android:onClick="schwierigkeitsgradspeichern"/>
+                    android:layout_marginTop="25dp"/>
 
                 <RadioButton
                     android:layout_width="wrap_content"
@@ -58,8 +58,7 @@
                     android:id="@+id/radstufe1"
                     android:layout_marginTop="25dp"
                     android:layout_below="@+id/radstufe0"
-                    android:layout_alignStart="@+id/radstufe0"
-                    android:onClick="schwierigkeitsgradspeichern"/>
+                    android:layout_alignStart="@+id/radstufe0"/>
 
                 <RadioButton
                     android:layout_width="wrap_content"
@@ -68,8 +67,7 @@
                     android:id="@+id/radstufe2"
                     android:layout_below="@+id/radstufe1"
                     android:layout_alignStart="@+id/radstufe1"
-                    android:layout_marginTop="25dp"
-                    android:onClick="schwierigkeitsgradspeichern"/>
+                    android:layout_marginTop="25dp"/>
 
                 <RadioButton
                     android:layout_width="wrap_content"
@@ -78,8 +76,7 @@
                     android:id="@+id/radstufe3"
                     android:layout_below="@+id/radstufe2"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="25dp"
-                    android:onClick="schwierigkeitsgradspeichern" />
+                    android:layout_marginTop="25dp" />
 
                 <RadioButton
                     android:layout_width="wrap_content"
@@ -88,10 +85,22 @@
                     android:id="@+id/radstufeall"
                     android:layout_marginTop="25dp"
                     android:layout_below="@+id/radstufe3"
-                    android:layout_alignStart="@+id/radstufe3"
-                    android:onClick="schwierigkeitsgradspeichern"
-                    android:checked="true"/>
+                    android:layout_alignStart="@+id/radstufe3"/>
             </RadioGroup>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/speichern"
+                android:id="@+id/btn_schwierigkeitspeichern"
+                android:layout_below="@+id/radgrp_schwierigkeit"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="25dp"
+                android:paddingBottom="20dp"
+                android:paddingTop="20dp"
+                android:background="@color/green"
+                android:textSize="20dp"
+                android:onClick="schwierigkeitsgradspeichern"/>
+
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

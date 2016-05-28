@@ -21,11 +21,25 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/einst_btn_user"
+                android:id="@+id/btn_benutzername"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="25dp"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+                android:onClick="benutzername"
+                android:textSize="20dp"/>
+
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/einst_btn_maxfragen"
                 android:id="@+id/btn_maxfragen"
+                android:layout_below="@+id/btn_benutzername"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="25dp"
                 android:paddingTop="20dp"
@@ -49,22 +63,9 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/einst_btn_user"
-                android:id="@+id/btn_benutzername"
-                android:layout_below="@+id/btn_umkreis"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="25dp"
-                android:paddingTop="20dp"
-                android:paddingBottom="20dp"
-                android:onClick="benutzername"
-                android:textSize="20dp"/>
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:text="@string/einst_btn_schwierigkeit"
                 android:id="@+id/btn_schwierigkeitsgrad"
-                android:layout_below="@+id/btn_benutzername"
+                android:layout_below="@+id/btn_umkreis"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="25dp"
                 android:paddingBottom="20dp"
@@ -72,7 +73,7 @@
                 android:onClick="schwierigkeitsgrad"
                 android:textSize="20dp"/>
 
- <!--TEST           <Button
+            <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="show name"
@@ -83,9 +84,9 @@
                 android:layout_marginTop="50dp"
                 android:paddingTop="20dp"
                 android:paddingBottom="20dp"
-                android:onClick="speichern"
+                android:onClick="umkreisanzeigen"
                 android:textSize="20dp"/>
--->
+
 <!--            <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

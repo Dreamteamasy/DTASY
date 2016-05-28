@@ -22,7 +22,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Aus welchem Umkreis sollen die Fragen kommen?"
+                android:text="Aus welchem Umkreis sollen die Fragen gestellt werden?"
                 android:id="@+id/txt_welcherumkreis"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="25dp"

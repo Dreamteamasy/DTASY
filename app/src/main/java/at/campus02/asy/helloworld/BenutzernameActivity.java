@@ -28,10 +28,8 @@ public class BenutzernameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_benutzername);
 
-       // edname = (EditText) findViewById(R.id.edit_benutzername);
-       // btnname = (Button) findViewById(R.id.btn_benutzernamespeichern);
-
-        variablensetzen();
+        edname = (EditText) findViewById(R.id.edit_benutzername);
+        btnname = (Button) findViewById(R.id.btn_benutzernamespeichern);
 
         sharedPreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
 
@@ -54,12 +52,6 @@ public class BenutzernameActivity extends AppCompatActivity {
                 startActivity(intentbenutzerspeichern);
             }
         });
-    }
-
-    public void variablensetzen(){
-        edname = (EditText) findViewById(R.id.edit_benutzername);
-        btnname = (Button) findViewById(R.id.btn_benutzernamespeichern);
-
     }
 
     @Override
