@@ -49,7 +49,8 @@
                     android:id="@+id/radstufe0"
                     android:layout_below="@+id/txt_fragenwieschwer"
                     android:layout_alignStart="@+id/radstufe3"
-                    android:layout_marginTop="25dp"/>
+                    android:layout_marginTop="25dp"
+                    android:textSize="20dp"/>
 
                 <RadioButton
                     android:layout_width="wrap_content"
@@ -58,7 +59,8 @@
                     android:id="@+id/radstufe1"
                     android:layout_marginTop="25dp"
                     android:layout_below="@+id/radstufe0"
-                    android:layout_alignStart="@+id/radstufe0"/>
+                    android:layout_alignStart="@+id/radstufe0"
+                    android:textSize="20dp"/>
 
                 <RadioButton
                     android:layout_width="wrap_content"
@@ -67,7 +69,8 @@
                     android:id="@+id/radstufe2"
                     android:layout_below="@+id/radstufe1"
                     android:layout_alignStart="@+id/radstufe1"
-                    android:layout_marginTop="25dp"/>
+                    android:layout_marginTop="25dp"
+                    android:textSize="20dp"/>
 
                 <RadioButton
                     android:layout_width="wrap_content"
@@ -76,7 +79,8 @@
                     android:id="@+id/radstufe3"
                     android:layout_below="@+id/radstufe2"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="25dp" />
+                    android:layout_marginTop="25dp"
+                    android:textSize="20dp"/>
 
                 <RadioButton
                     android:layout_width="wrap_content"
@@ -85,12 +89,14 @@
                     android:id="@+id/radstufeall"
                     android:layout_marginTop="25dp"
                     android:layout_below="@+id/radstufe3"
-                    android:layout_alignStart="@+id/radstufe3"/>
+                    android:layout_alignStart="@+id/radstufe3"
+                    android:checked="true"
+                    android:textSize="20dp"/>
             </RadioGroup>
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/speichern"
+                android:text="@string/speichern_btn"
                 android:id="@+id/btn_schwierigkeitspeichern"
                 android:layout_below="@+id/radgrp_schwierigkeit"
                 android:layout_centerHorizontal="true"

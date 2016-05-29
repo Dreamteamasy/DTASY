@@ -70,7 +70,7 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/speichern"
+                android:text="@string/speichern_btn"
                 android:id="@+id/btn_umkreisspeichern"
                 android:layout_below="@+id/grid_umkreis"
                 android:layout_centerHorizontal="true"

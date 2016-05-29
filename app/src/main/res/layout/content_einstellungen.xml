@@ -70,21 +70,6 @@
                 android:layout_marginTop="25dp"
                 android:paddingBottom="20dp"
                 android:paddingTop="20dp"
-                android:onClick="schwierigkeitsgrad"
-                android:textSize="20dp"/>
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="show name"
-                android:id="@+id/btn_einstspeichern"
-                android:layout_below="@+id/btn_schwierigkeitsgrad"
-                android:layout_centerHorizontal="true"
-                android:background="@color/green"
-                android:layout_marginTop="50dp"
-                android:paddingTop="20dp"
-                android:paddingBottom="20dp"
-                android:onClick="umkreisanzeigen"
                 android:textSize="20dp"/>
 
 <!--            <Button

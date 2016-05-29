@@ -7,17 +7,30 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.Button;
 import android.widget.Toast;
 
 
 public class EinstellungenActivity extends AppCompatActivity {
 
+    public static final String MyPREFERENCES = "MyPrefs";
     SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_einstellungen);
+
+        Button schwierigkeitsgrad = (Button) findViewById(R.id.btn_schwierigkeitsgrad);
+        schwierigkeitsgrad.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentSchwierigkeitsgrad = new Intent(getBaseContext(), SchwierigkeitsgradActivity.class);
+                startActivity(intentSchwierigkeitsgrad);
+            }
+        });
+
+       // getEinstellungen();
     }
 
     public void benutzername(View view) {
@@ -51,6 +64,28 @@ public class EinstellungenActivity extends AppCompatActivity {
         Intent nameanzeigen = new Intent(this, MainActivity.class);
         startActivity(nameanzeigen);
     }
+    @Override
+    protected void onResume(){
+        super.onResume();
+        getEinstellungen();
+    }
+    private void getEinstellungen() {
+        sharedPreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+        String schwierigkeitsstufe = sharedPreferences.getString(SchwierigkeitsgradActivity.Schwierigkeit, "alle Stufen");
+        if (schwierigkeitsstufe.equals("alle Stufen")){
+
+        } else if(schwierigkeitsstufe.equals("leicht (Stufe 0)")){
+
+        } else if(schwierigkeitsstufe.equals("normal (Stufe 1)")){
+
+        } else if(schwierigkeitsstufe.equals("schwer (Stufe 2")){
+
+        } else{
+
+        }
+    }
+
+
 //    public void speichern(View view) {
 //        //Button Action
 //        String infoText = "Die Einstellungen wurden gespeichert";

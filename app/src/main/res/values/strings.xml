@@ -7,7 +7,6 @@
     <string name="einst_btn_umkreis">GPS - Umkreis x km</string>
     <string name="einst_btn_user">Benutzername</string>
     <string name="einst_btn_schwierigkeit">Schwierigkeitsgrad</string>
-    <string name="einst_btn_save">Einstellungen speichern</string>
     <string name="einblenden">Antwort einblenden</string>
     <string name="ausblenden">Antwort ausblenden</string>
     <string name="frage_erstellen_btn">Frage erstellen</string>
@@ -15,7 +14,7 @@
     <string name="alle_kaetg_btn">Alle Kategorien</string>
     <string name="eine_kateg_btn">Kategorie...</string>
     <string name="umgebung_kateg_btn">Frage in der Umgebung</string>
-    <string name="speichern">Speichern</string>
+    <string name="speichern_btn">Speichern</string>
 
     <!-- Strings related to Settings -->
 

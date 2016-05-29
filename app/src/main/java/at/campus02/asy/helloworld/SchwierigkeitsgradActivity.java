@@ -23,7 +23,7 @@ public class SchwierigkeitsgradActivity extends AppCompatActivity {
 //    RadioButton rbstufe3;
 //    RadioButton rbstufealle;
     RadioButton rbstufen;
-    RadioGroup grpschwierigkeit;
+    RadioGroup rgrpschwierigkeit;
     Button btnschwierigkeit;
     public static final String MyPREFERENCES = "MyPrefs";
     public static final String Schwierigkeit = "schwierigkeitKey";
@@ -33,14 +33,45 @@ public class SchwierigkeitsgradActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_schwierigkeitsgrad);
+
+        rgrpschwierigkeit = (RadioGroup) findViewById(R.id.radgrp_schwierigkeit);
+        btnschwierigkeit = (Button) findViewById(R.id.btn_schwierigkeitspeichern);
+        sharedPreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+        setRadioButtion();
+
+        btnschwierigkeit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int selectedId = rgrpschwierigkeit.getCheckedRadioButtonId();
+                rbstufen = (RadioButton) findViewById(selectedId);
+
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                String schwierigkeitsstufe = rbstufen.getText().toString();
+                editor.putString(Schwierigkeit, schwierigkeitsstufe);
+                editor.commit();
+
+                String infoText = "Die Schwierigkeitsstufe " + schwierigkeitsstufe + " wurde gespeichert";
+                Toast infoToast = Toast.makeText(getApplicationContext(), infoText, Toast.LENGTH_SHORT);
+                infoToast.show();
+
+                Intent intentschwierigkeitsgrad = new Intent(getBaseContext(), EinstellungenActivity.class);
+                startActivity(intentschwierigkeitsgrad);
+            }
+        });
     }
 
-    public void schwierigkeitsgradspeichern(View view) {
-        String infoText = "Die Einstellung wurde gespeichert";
-        Toast infoToast = Toast.makeText(getApplicationContext(), infoText, Toast.LENGTH_SHORT);
-        infoToast.show();
-
-        Intent intentschwierigkeitsgrad = new Intent(this, EinstellungenActivity.class);
-        startActivity(intentschwierigkeitsgrad);
+    private void setRadioButtion() {
+        String schwierigkeitsstufe = sharedPreferences.getString(SchwierigkeitsgradActivity.Schwierigkeit, "alle Stufen");
+        if (schwierigkeitsstufe.equals("alle Stufen")){
+            rgrpschwierigkeit.check(R.id.radstufeall);
+        } else if(schwierigkeitsstufe.equals("leicht (Stufe 0)")){
+            rgrpschwierigkeit.check(R.id.radstufe0);
+        } else if(schwierigkeitsstufe.equals("normal (Stufe 1)")){
+            rgrpschwierigkeit.check(R.id.radstufe1);
+        } else if(schwierigkeitsstufe.equals("schwer (Stufe 2")){
+            rgrpschwierigkeit.check(R.id.radstufe2);
+        } else{
+            rgrpschwierigkeit.check(R.id.radstufe3);
+        }
     }
 }
