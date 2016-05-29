@@ -87,20 +87,6 @@
                 android:onClick="einstzuruecksetzen"
                 android:textSize="20dp"/>
 
-<!--            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/speichern"
-                android:id="@+id/btn_einstspeichern"
-                android:layout_below="@+id/btn_schwierigkeitsgrad"
-                android:layout_centerHorizontal="true"
-                android:background="@color/green"
-                android:layout_marginTop="50dp"
-                android:paddingTop="20dp"
-                android:paddingBottom="20dp"
-                android:onClick="speichern"
-                android:textSize="20dp"/>
--->
         </RelativeLayout>
     </ScrollView>
 </RelativeLayout>

@@ -45,18 +45,6 @@ public class EinstellungenActivity extends AppCompatActivity {
         startActivity(intentSchwierigkeitsgrad);
     }
 
-//um auf Einstellungen zuzugreifen
-    public  void umkreisanzeigen(View view){
-        sharedPreferences = this.getSharedPreferences(UmkreisActivity.MyPREFERENCES, Context.MODE_PRIVATE);
-
-        String infoText = "Umkreis: " + sharedPreferences.getString(UmkreisActivity.Umkreis, "Default-Wert") + " km";
-        Toast infoToast = Toast.makeText(getApplicationContext(), infoText, Toast.LENGTH_SHORT);
-        infoToast.show();
-
-        Intent nameanzeigen = new Intent(this, MainActivity.class);
-        startActivity(nameanzeigen);
-    }
-
     public void einstzuruecksetzen(View view) {
         sharedPreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         sharedPreferences.edit().clear().commit();
@@ -65,31 +53,30 @@ public class EinstellungenActivity extends AppCompatActivity {
         Toast infoToast = Toast.makeText(getApplicationContext(), infoText, Toast.LENGTH_SHORT);
         infoToast.show();
     }
+//um auf Einstellungen zuzugreifen
+
+//    public  void umkreisanzeigen(View view){
+//        sharedPreferences = this.getSharedPreferences(UmkreisActivity.MyPREFERENCES, Context.MODE_PRIVATE);
+
+//        String infoText = "Umkreis: " + sharedPreferences.getString(UmkreisActivity.Umkreis, "Default-Wert") + " km";
+//        Toast infoToast = Toast.makeText(getApplicationContext(), infoText, Toast.LENGTH_SHORT);
+//        infoToast.show();
+//    }
+
 //    @Override
 //    protected void onResume(){
 //        super.onResume();
 //        getEinstellungen();
 //    }
+
 //    private void getEinstellungen() {
 //        sharedPreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
 //        String schwierigkeitsstufe = sharedPreferences.getString(SchwierigkeitsgradActivity.Schwierigkeit, "alle Stufen");
-//        if (schwierigkeitsstufe.equals("alle Stufen")){
-//        } else if(schwierigkeitsstufe.equals("leicht (Stufe 0)")){
-//        } else if(schwierigkeitsstufe.equals("normal (Stufe 1)")){
-//        } else if(schwierigkeitsstufe.equals("schwer (Stufe 2")){
-//        } else{
-//        }
-//    }
-
-
-//    public void speichern(View view) {
-//        //Button Action
-//        String infoText = "Die Einstellungen wurden gespeichert";
-//        Toast infoToast = Toast.makeText(getApplicationContext(), infoText, Toast.LENGTH_SHORT);
-//        infoToast.show();
-
-//        Intent intentSpeichern = new Intent(this, MainActivity.class);
-//        startActivity(intentSpeichern);
+//        if (schwierigkeitsstufe.equals("alle Stufen")){}
+//        else if(schwierigkeitsstufe.equals("leicht (Stufe 0)")){}
+//        else if(schwierigkeitsstufe.equals("normal (Stufe 1)")){}
+//        else if(schwierigkeitsstufe.equals("schwer (Stufe 2")){}
+//        else{}
 //    }
 
 }
