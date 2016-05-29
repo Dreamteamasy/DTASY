@@ -15,10 +15,17 @@ import at.campus02.asy.helloworld.objects.Question;
 import retrofit2.Callback;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 
 public class DetailscreenActivity extends AppCompatActivity
 {
+    private Retrofit retrofit;
+    private ElearningService service;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,24 +45,50 @@ public class DetailscreenActivity extends AppCompatActivity
         });
     }
 
-    Retrofit retrofit = new Retrofit.Builder()
+    public DetailscreenActivity(Retrofit retrofit) {
+        //Retrofit
+         retrofit = new Retrofit.Builder()
+                .baseUrl("http://campus02learningapp.azurewebsites.net/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        this.service = retrofit.create(ElearningService.class);
+
+        this.service.list().enqueue(new Callback<List<Question>>() {
+            @Override
+            public void onResponse(Call<List<Question>> call, Response<List<Question>> response) {
+                // TODO
+
+            }
+
+            @Override
+            public void onFailure(Call<List<Question>> call, Throwable t) {
+
+            }
+        });
+    }
+
+    /*Retrofit retrofit = new Retrofit.Builder()
             .baseUrl("http://campus02learningapp.azurewebsites.net/")
             .addConverterFactory(GsonConverterFactory.create())
             .build();
 
     ElearningService service = retrofit.create(ElearningService.class);
 
-    /*service.list().enqueue(new Callback<List<Question>>() {
-        @Override
-        public void onResponse(Call<List<Question>> call, Response<List<Question>> response) {
-            ((TextView)findViewById(R.id.frage)).setText("Hello World " + response.body().size());
-        }
 
-        @Override
-        public void onFailure(Call<List<Question>> call, Throwable t) {
+    // Example Service Call
+    service.list().enqueue(new Callback<List<Question>>() {
+    @Override
+    public void onResponse(Call<List<Question>> call, Response<List<Question>> response) {
 
-        }
+    }
+
+    @Override
+    public void onFailure(Call<List<Question>> call, Throwable t) {
+
+    }
     });*/
+
 
 
 
