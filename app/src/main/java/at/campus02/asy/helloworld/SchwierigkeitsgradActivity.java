@@ -49,7 +49,7 @@ public class SchwierigkeitsgradActivity extends AppCompatActivity {
                 editor.putString(Schwierigkeit, schwierigkeitsstufe);
                 editor.commit();
 
-                String infoText = "Die Schwierigkeitsstufe " + schwierigkeitsstufe + " wurde gespeichert";
+                String infoText = "Die Schwierigkeitsstufe wurde gespeichert";
                 Toast infoToast = Toast.makeText(getApplicationContext(), infoText, Toast.LENGTH_SHORT);
                 infoToast.show();
 

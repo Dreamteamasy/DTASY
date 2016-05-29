@@ -46,12 +46,11 @@
                     android:layout_centerHorizontal="true"
                     android:layout_column="0"
                     android:layout_row="0"
-                    android:hint="20"
                     android:defaultValue="20"
-                    android:textColorHint="@color/colorAccent"
                     android:textAlignment="center"
                     android:inputType="number"
-                    android:textSize="@dimen/textgroesse"/>
+                    android:textSize="@dimen/textgroesse"
+                    android:selectAllOnFocus="true"/>
 
                 <TextView
                     android:layout_width="wrap_content"

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.InputFilter;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -30,23 +31,33 @@ public class UmkreisActivity extends AppCompatActivity {
         btnumkreis = (Button) findViewById(R.id.btn_umkreisspeichern);
         sharedPreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
 
+        String aktumkreis = sharedPreferences.getString(Umkreis, "20");
+        edumkreis.setText(aktumkreis);
+
         btnumkreis.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View v) {
                 String u = edumkreis.getText().toString();
 
-                SharedPreferences.Editor editor = sharedPreferences.edit();
+                if(u.equals("")){
+                    String keinTxt = "Bitte einen Umkreis eingeben";
+                    Toast keinTxtToast = Toast.makeText(getApplicationContext(), keinTxt, Toast.LENGTH_SHORT);
+                    keinTxtToast.show();
+                } else {
 
-                editor.putString(Umkreis, u);
-                editor.commit();
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
 
-                String infoText = "Ein Umkreis von " + u + " km wurde gespeichert";
-                Toast infoToast = Toast.makeText(getApplicationContext(), infoText, Toast.LENGTH_SHORT);
-                infoToast.show();
+                    editor.putString(Umkreis, u);
+                    editor.commit();
 
-                Intent intentumkreis = new Intent(getBaseContext(), EinstellungenActivity.class);
-                startActivity(intentumkreis);
+                    String infoText = "Ein Umkreis von " + u + " km wurde gespeichert";
+                    Toast infoToast = Toast.makeText(getApplicationContext(), infoText, Toast.LENGTH_SHORT);
+                    infoToast.show();
+
+                    Intent intentumkreis = new Intent(getBaseContext(), EinstellungenActivity.class);
+                    startActivity(intentumkreis);
+                }
             }
         });
     }

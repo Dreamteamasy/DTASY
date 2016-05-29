@@ -36,22 +36,33 @@ public class MaxFragenActivity extends AppCompatActivity {
 
         sharedPreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
 
+        String runden = sharedPreferences.getString(Fragen, "10");
+        edfragen.setText(runden);
+
         btnfragen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String f = edfragen.getText().toString();
 
-                SharedPreferences.Editor editor = sharedPreferences.edit();
+                if(f.equals("")){
+                    String keinTxt = "Bitte die maximalen Runden eingeben";
+                    Toast keinTxtToast = Toast.makeText(getApplicationContext(), keinTxt, Toast.LENGTH_SHORT);
+                    keinTxtToast.show();
+                } else {
 
-                editor.putString(Fragen, f);
-                editor.commit();
 
-                String infoText = f + " Runden wurden gespeichert";
-                Toast infoToast = Toast.makeText(getApplicationContext(), infoText, Toast.LENGTH_SHORT);
-                infoToast.show();
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
 
-                Intent intentMaxFragenSave = new Intent(getBaseContext(), EinstellungenActivity.class);
-                startActivity(intentMaxFragenSave);
+                    editor.putString(Fragen, f);
+                    editor.commit();
+
+                    String infoText = f + " Runden wurden gespeichert";
+                    Toast infoToast = Toast.makeText(getApplicationContext(), infoText, Toast.LENGTH_SHORT);
+                    infoToast.show();
+
+                    Intent intentMaxFragenSave = new Intent(getBaseContext(), EinstellungenActivity.class);
+                    startActivity(intentMaxFragenSave);
+                }
             }
         });
     }

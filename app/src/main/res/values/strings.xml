@@ -17,6 +17,7 @@
     <string name="einst_btn_umkreis">GPS - Umkreis x km</string>
     <string name="einst_btn_user">Benutzername</string>
     <string name="einst_btn_schwierigkeit">Schwierigkeitsstufe</string>
+    <string name="einst_btn_zuruecksetzen">Einstellungen zurücksetzen</string>
 
     <string name="user_txt">Bitte gib deinen Spielernamen an:</string>
     <string name="runden_txt">Wie viele Runden willst du spielen?</string>

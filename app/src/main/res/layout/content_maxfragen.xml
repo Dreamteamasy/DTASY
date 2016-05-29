@@ -37,16 +37,16 @@
                 android:layout_height="wrap_content"
                 android:inputType="number"
                 android:ems="10"
-                android:hint="10"
+                android:text=""
                 android:defaultValue="10"
-                android:textColorHint="@color/colorAccent"
                 android:id="@+id/edit_maxfragen"
                 android:layout_below="@id/txt_wievielefragen"
                 android:layout_centerHorizontal="true"
                 android:paddingBottom="@dimen/feldpadding"
                 android:paddingTop="@dimen/feldpadding"
                 android:textAlignment="center"
-                android:textSize="@dimen/textgroesse"/>
+                android:textSize="@dimen/textgroesse"
+                android:selectAllOnFocus="true"/>
 
             <Button
                 android:layout_width="match_parent"

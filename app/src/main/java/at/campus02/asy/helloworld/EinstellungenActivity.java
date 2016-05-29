@@ -56,6 +56,15 @@ public class EinstellungenActivity extends AppCompatActivity {
         Intent nameanzeigen = new Intent(this, MainActivity.class);
         startActivity(nameanzeigen);
     }
+
+    public void einstzuruecksetzen(View view) {
+        sharedPreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+        sharedPreferences.edit().clear().commit();
+
+        String infoText = "Die Einstellungen wurden zurückgesetzt";
+        Toast infoToast = Toast.makeText(getApplicationContext(), infoText, Toast.LENGTH_SHORT);
+        infoToast.show();
+    }
 //    @Override
 //    protected void onResume(){
 //        super.onResume();

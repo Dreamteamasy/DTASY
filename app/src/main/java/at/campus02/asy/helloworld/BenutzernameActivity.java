@@ -33,23 +33,33 @@ public class BenutzernameActivity extends AppCompatActivity {
 
         sharedPreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
 
+        String aktname = sharedPreferences.getString(Name, "");
+        edname.setText(aktname);
+
         btnname.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 String n = edname.getText().toString();
 
-                SharedPreferences.Editor editor = sharedPreferences.edit();
+                if(n.equals("")) {
+                    String keinTxt = "Bitte einen Namen eingeben";
+                    Toast keinTxtToast = Toast.makeText(getApplicationContext(), keinTxt, Toast.LENGTH_SHORT);
+                    keinTxtToast.show();
+                } else{
 
-                editor.putString(Name, n);
-                editor.commit();
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
 
-                String infoText = "Der Name " + n + " wurden gespeichert";
-                Toast infoToast = Toast.makeText(getApplicationContext(), infoText, Toast.LENGTH_SHORT);
-                infoToast.show();
+                    editor.putString(Name, n);
+                    editor.commit();
 
-                Intent intentbenutzerspeichern = new Intent(getBaseContext(), EinstellungenActivity.class);
-                startActivity(intentbenutzerspeichern);
+                    String infoText = "Der Name '" + n + "' wurden gespeichert";
+                    Toast infoToast = Toast.makeText(getApplicationContext(), infoText, Toast.LENGTH_SHORT);
+                    infoToast.show();
+
+                    Intent intentbenutzerspeichern = new Intent(getBaseContext(), EinstellungenActivity.class);
+                    startActivity(intentbenutzerspeichern);
+                }
             }
         });
     }

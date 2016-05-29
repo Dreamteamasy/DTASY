@@ -41,7 +41,8 @@
                 android:paddingBottom="@dimen/feldpadding"
                 android:paddingTop="@dimen/feldpadding"
                 android:textAlignment="center"
-                android:textSize="@dimen/textgroesse"/>
+                android:textSize="@dimen/textgroesse"
+                android:selectAllOnFocus="true"/>
 
             <Button
                 android:layout_width="match_parent"
