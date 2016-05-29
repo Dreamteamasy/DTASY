@@ -47,23 +47,30 @@
         <activity
             android:name=".FrageErstellenActivity"
             android:label="@string/title_activity_frage_erstellen"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".EinstellungenActivity"
             android:label="@string/title_activity_settings"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".DetailscreenActivity"
             android:label="@string/title_activity_detailscreen"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"/>
         <activity android:name=".MaxFragenActivity"
-            android:parentActivityName=".EinstellungenActivity" />
+            android:parentActivityName=".EinstellungenActivity"
+            android:screenOrientation="portrait"/>
         <activity android:name=".BenutzernameActivity"
-            android:parentActivityName=".EinstellungenActivity"/>
+            android:parentActivityName=".EinstellungenActivity"
+            android:screenOrientation="portrait"/>
         <activity android:name=".SchwierigkeitsgradActivity"
-            android:parentActivityName=".EinstellungenActivity"/>
+            android:parentActivityName=".EinstellungenActivity"
+            android:screenOrientation="portrait"/>
         <activity android:name=".UmkreisActivity"
-            android:parentActivityName=".EinstellungenActivity"/>
+            android:parentActivityName=".EinstellungenActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
