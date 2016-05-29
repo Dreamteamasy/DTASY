@@ -50,15 +50,20 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".EinstellungenActivity"
-            android:label="@string/title_activity_settings" />
+            android:label="@string/title_activity_settings"
+            android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".DetailscreenActivity"
             android:label="@string/title_activity_detailscreen"
             android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".MaxFragenActivity" />
-        <activity android:name=".BenutzernameActivity" />
-        <activity android:name=".SchwierigkeitsgradActivity" />
-        <activity android:name=".UmkreisActivity" />
+        <activity android:name=".MaxFragenActivity"
+            android:parentActivityName=".EinstellungenActivity" />
+        <activity android:name=".BenutzernameActivity"
+            android:parentActivityName=".EinstellungenActivity"/>
+        <activity android:name=".SchwierigkeitsgradActivity"
+            android:parentActivityName=".EinstellungenActivity"/>
+        <activity android:name=".UmkreisActivity"
+            android:parentActivityName=".EinstellungenActivity"/>
     </application>
 
 </manifest>

@@ -2,11 +2,7 @@
     <string name="app_name">DT-Learning-App</string>
     <string name="action_settings">Campus02 Homepage</string>
     <string name="main_text_title">DreamTeam Learning-App</string>
-    <string name="einstellungen_btn">Einstellungen</string>
-    <string name="einst_btn_maxfragen">Max. Fragen pro Runde</string>
-    <string name="einst_btn_umkreis">GPS - Umkreis x km</string>
-    <string name="einst_btn_user">Benutzername</string>
-    <string name="einst_btn_schwierigkeit">Schwierigkeitsgrad</string>
+    <string name="speichern_btn">Speichern</string>
     <string name="einblenden">Antwort einblenden</string>
     <string name="ausblenden">Antwort ausblenden</string>
     <string name="frage_erstellen_btn">Frage erstellen</string>
@@ -14,7 +10,23 @@
     <string name="alle_kaetg_btn">Alle Kategorien</string>
     <string name="eine_kateg_btn">Kategorie...</string>
     <string name="umgebung_kateg_btn">Frage in der Umgebung</string>
-    <string name="speichern_btn">Speichern</string>
+
+    <!-- Einstellungen -->
+    <string name="einstellungen_btn">Einstellungen</string>
+    <string name="einst_btn_maxfragen">Max. Fragen pro Runde</string>
+    <string name="einst_btn_umkreis">GPS - Umkreis x km</string>
+    <string name="einst_btn_user">Benutzername</string>
+    <string name="einst_btn_schwierigkeit">Schwierigkeitsstufe</string>
+
+    <string name="user_txt">Bitte gib deinen Spielernamen an:</string>
+    <string name="runden_txt">Wie viele Runden willst du spielen?</string>
+    <string name="umkreis_txt">Aus welchem Umkreis sollen die Fragen gestellt werden?</string>
+    <string name="schwierigkeit_txt">Wie schwer sollen die Fragen sein?</string>
+    <string name="schwierigkeit_s0_rb">leicht (Stufe 0)</string>
+    <string name="schwierigkeit_s1_rb">normal (Stufe 1)</string>
+    <string name="schwierigkeit_s2_rb">schwer (Stufe 2)</string>
+    <string name="schwierigkeit_s3_rb">sehr schwer (Stufe 3)</string>
+    <string name="schwierigkeit_sa_rb">alle Stufen</string>
 
     <!-- Strings related to Settings -->
 

@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -63,7 +62,7 @@ public class SchwierigkeitsgradActivity extends AppCompatActivity {
     private void setRadioButtion() {
         String schwierigkeitsstufe = sharedPreferences.getString(SchwierigkeitsgradActivity.Schwierigkeit, "alle Stufen");
         if (schwierigkeitsstufe.equals("alle Stufen")){
-            rgrpschwierigkeit.check(R.id.radstufeall);
+            rgrpschwierigkeit.check(R.id.radstufealle);
         } else if(schwierigkeitsstufe.equals("leicht (Stufe 0)")){
             rgrpschwierigkeit.check(R.id.radstufe0);
         } else if(schwierigkeitsstufe.equals("normal (Stufe 1)")){

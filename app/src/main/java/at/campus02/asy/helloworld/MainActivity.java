@@ -77,8 +77,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void einstellungen(View view) {
         //validate input
-        Intent intentGame = new Intent(this, EinstellungenActivity.class);
-        startActivity(intentGame);
+        Intent intenteinstellungen = new Intent(this, EinstellungenActivity.class);
+        startActivity(intenteinstellungen);
     }
 
 

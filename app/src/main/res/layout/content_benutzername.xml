@@ -24,14 +24,13 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Bitte gib deinen Spielernamen an:"
+                android:text="@string/user_txt"
                 android:id="@+id/txt_welchername"
                 android:layout_centerHorizontal="true"
                 android:textAlignment="center"
-                android:textSize="20dp"
-                android:layout_marginTop="25dp"
-                android:paddingBottom="20dp"
-                android:paddingTop="20dp"/>
+                android:textSize="@dimen/textgroesse"
+                android:paddingBottom="@dimen/feldpadding"
+                android:paddingTop="@dimen/feldpadding"/>
 
             <EditText
                 android:layout_width="match_parent"
@@ -39,10 +38,10 @@
                 android:id="@+id/edit_benutzername"
                 android:layout_below="@id/txt_welchername"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="25dp"
-                android:paddingBottom="20dp"
-                android:paddingTop="20dp"
-                android:textAlignment="center"/>
+                android:paddingBottom="@dimen/feldpadding"
+                android:paddingTop="@dimen/feldpadding"
+                android:textAlignment="center"
+                android:textSize="@dimen/textgroesse"/>
 
             <Button
                 android:layout_width="match_parent"
@@ -52,10 +51,10 @@
                 android:layout_below="@+id/edit_benutzername"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="25dp"
-                android:paddingBottom="20dp"
-                android:paddingTop="20dp"
+                android:paddingBottom="@dimen/feldpadding"
+                android:paddingTop="@dimen/feldpadding"
                 android:background="@color/green"
-                android:textSize="20dp"/>
+                android:textSize="@dimen/textgroesse"/>
         </RelativeLayout>
     </ScrollView>
 </RelativeLayout>

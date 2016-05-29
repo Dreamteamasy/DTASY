@@ -29,10 +29,10 @@
                 android:id="@+id/btn_benutzername"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="25dp"
-                android:paddingTop="20dp"
-                android:paddingBottom="20dp"
+                android:paddingTop="@dimen/feldpadding"
+                android:paddingBottom="@dimen/feldpadding"
                 android:onClick="benutzername"
-                android:textSize="20dp"/>
+                android:textSize="@dimen/textgroesse"/>
 
             <Button
                 android:layout_width="match_parent"
@@ -42,10 +42,10 @@
                 android:layout_below="@+id/btn_benutzername"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="25dp"
-                android:paddingTop="20dp"
-                android:paddingBottom="20dp"
+                android:paddingTop="@dimen/feldpadding"
+                android:paddingBottom="@dimen/feldpadding"
                 android:onClick="maxfragen"
-                android:textSize="20dp"/>
+                android:textSize="@dimen/textgroesse"/>
 
             <Button
                 android:layout_width="match_parent"
@@ -55,10 +55,10 @@
                 android:layout_below="@+id/btn_maxfragen"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="25dp"
-                android:paddingBottom="20dp"
-                android:paddingTop="20dp"
+                android:paddingBottom="@dimen/feldpadding"
+                android:paddingTop="@dimen/feldpadding"
                 android:onClick="umkreis"
-                android:textSize="20dp"/>
+                android:textSize="@dimen/textgroesse"/>
 
             <Button
                 android:layout_width="match_parent"
@@ -68,9 +68,10 @@
                 android:layout_below="@+id/btn_umkreis"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="25dp"
-                android:paddingBottom="20dp"
-                android:paddingTop="20dp"
-                android:textSize="20dp"/>
+                android:paddingBottom="@dimen/feldpadding"
+                android:paddingTop="@dimen/feldpadding"
+                android:onClick="schwierigkeitsgrad"
+                android:textSize="@dimen/textgroesse"/>
 
 <!--            <Button
                 android:layout_width="match_parent"

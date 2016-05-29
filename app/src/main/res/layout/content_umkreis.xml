@@ -22,14 +22,13 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Aus welchem Umkreis sollen die Fragen gestellt werden?"
+                android:text="@string/umkreis_txt"
                 android:id="@+id/txt_welcherumkreis"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="25dp"
                 android:textAlignment="center"
-                android:textSize="20dp"
-                android:paddingBottom="20dp"
-                android:paddingTop="20dp" />
+                android:textSize="@dimen/textgroesse"
+                android:paddingBottom="@dimen/feldpadding"
+                android:paddingTop="@dimen/feldpadding" />
 
 
             <GridLayout
@@ -45,14 +44,14 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/edit_umkreisantwort"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="25dp"
                     android:layout_column="0"
                     android:layout_row="0"
                     android:hint="20"
                     android:defaultValue="20"
                     android:textColorHint="@color/colorAccent"
                     android:textAlignment="center"
-                    android:inputType="number"/>
+                    android:inputType="number"
+                    android:textSize="@dimen/textgroesse"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -61,8 +60,7 @@
                     android:id="@+id/textView"
                     android:layout_below="@+id/txt_welcherumkreis"
                     android:layout_toEndOf="@+id/button"
-                    android:layout_marginTop="25dp"
-                    android:textSize="20dp"
+                    android:textSize="@dimen/textgroesse"
                     android:layout_column="1"
                     android:layout_row="0"/>
             </GridLayout>
@@ -75,11 +73,11 @@
                 android:layout_below="@+id/grid_umkreis"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="25dp"
-                android:paddingBottom="20dp"
-                android:paddingTop="20dp"
+                android:paddingBottom="@dimen/feldpadding"
+                android:paddingTop="@dimen/feldpadding"
                 android:background="@color/green"
                 android:onClick="umkreiszwischenspeichern"
-                android:textSize="20dp"/>
+                android:textSize="@dimen/textgroesse"/>
         </RelativeLayout>
     </ScrollView>
 </RelativeLayout>
