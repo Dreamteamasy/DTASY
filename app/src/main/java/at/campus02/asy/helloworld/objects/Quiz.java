@@ -2,6 +2,10 @@ package at.campus02.asy.helloworld.objects;
 
 import android.util.Log;
 
+import org.json.JSONArray;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -17,7 +21,7 @@ public class Quiz {
 
     private Retrofit retrofit;
     private ElearningService service;
-    public List list;
+    public String frage;
 
     public Quiz() {
 
@@ -33,13 +37,21 @@ public class Quiz {
             @Override
             public void onResponse(Call<List<Question>> call, Response<List<Question>> response) {
                 // TODO
-                list = response.body();
+                List<Question> list = response.body();
+                String[] objects = new String[list.size()];
+                objects = list.toArray(objects);
+                for (String object : objects) {
+                    String ftext = "Fragetext";
+                    if (object.equals(ftext)) {
+                        frage = object;
+                    }
+                }
             }
 
             @Override
             public void onFailure(Call<List<Question>> call, Throwable t) {
 
-                Log.v("DetailscreenActivity", "Fehler aufgetreten", t);
+                Log.v("DSAlleFragenActivity", "Fehler aufgetreten", t);
 
             }
         });

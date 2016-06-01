@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import at.campus02.asy.helloworld.objects.ElearningService;
@@ -24,7 +25,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 
-public class DetailscreenActivity extends AppCompatActivity
+public class DSAlleFragenActivity extends AppCompatActivity
 {
     private Retrofit retrofit;
     private ElearningService service;
@@ -37,7 +38,7 @@ public class DetailscreenActivity extends AppCompatActivity
         setContentView(R.layout.activity_detailscreen);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        Log.v("DetailscreenActivity", "Fehler aufgetreten");
+        Log.v("DSAlleFragenActivity", "Fehler aufgetreten");
 
         /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         assert fab != null;
@@ -50,13 +51,13 @@ public class DetailscreenActivity extends AppCompatActivity
         });*/
 
         tvQuestion = (TextView) findViewById(R.id.frage);
-        String[] mStringArray = new String[quiz.list.size()];
-        mStringArray = (String[]) quiz.list.toArray(mStringArray);
-
-        for(int i = 0; i < mStringArray.length ; i++){
-            Log.d("string is",(String)mStringArray[i]);
+        if (tvQuestion != null) {
+            tvQuestion.setText(quiz.frage);
         }
-        tvQuestion.setText(mStringArray[0]);
+        else{
+            Log.d("DSAlleFragenActivity", "Fehler aufgetreten");
+        }
+
 
     }
 

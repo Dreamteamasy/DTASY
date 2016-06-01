@@ -89,5 +89,7 @@
     <string name="title_activity_detailscreen">Detailscreen</string>
     <string name="title_activity_frage_erstellen">Frage erstellen</string>
     <string name="title_activity_settings">Einstellungen</string>
+    <string name="title_activity_dskategorie">DSKategorieActivity</string>
+    <string name="title_activity_dsumgebung">DSUmgebungActivity</string>
 
 </resources>
