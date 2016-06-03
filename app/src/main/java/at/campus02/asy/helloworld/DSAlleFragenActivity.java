@@ -4,8 +4,11 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import at.campus02.asy.helloworld.objects.ElearningService;
@@ -22,7 +25,10 @@ public class DSAlleFragenActivity extends AppCompatActivity
     private Retrofit retrofit;
     private ElearningService service;
     private TextView tvQuestion;
+    private TextView tvAnswer;
     public String frage;
+    public String antwort;
+    public Question question;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +48,10 @@ public class DSAlleFragenActivity extends AppCompatActivity
             }
         });*/
 
+        tvQuestion = (TextView) findViewById(R.id.frage);
+        tvAnswer = (TextView) findViewById(R.id.antwort);
+
+
         //Retrofit
         retrofit = new Retrofit.Builder()
                 .baseUrl("http://campus02learningapp.azurewebsites.net/")
@@ -54,19 +64,29 @@ public class DSAlleFragenActivity extends AppCompatActivity
             @Override
             public void onResponse(Call<List<Question>> call, Response<List<Question>> response) {
                 // TODO
-
-
-
                 List<Question> list = response.body();
-                String[] objects =  new String[list.size()];
 
+                Collections.shuffle(list);
 
-                for(int i = 0; i< list.size(); i++){
+                // ggfs. kürzen
 
-                    //objects[i] = list.get(i);
+                List<Question> result = new ArrayList<Question>();
 
-                  Question question = (Question)list.get(i);
-                    Log.d("DSAlleFragenActivity",question.Antwort.toString());
+                result = list.subList(0,10);
+
+                result.iterator().next();
+
+                for(Question q: result)
+                {
+                    frage= q.Fragetext;
+                    antwort = q.Antwort;
+                    if (tvQuestion != null) {
+                        tvQuestion.setText(frage);
+                        tvAnswer.setText(antwort);
+                    }
+                    else{
+                        Log.d("DSAlleFragenActivity", "Fehler aufgetreten");
+                    }
                 }
             }
 
@@ -77,20 +97,12 @@ public class DSAlleFragenActivity extends AppCompatActivity
 
             }
         });
-
-        tvQuestion = (TextView) findViewById(R.id.frage);
-        if (tvQuestion != null) {
-            tvQuestion.setText(frage);
-        }
-        else{
-            Log.d("DSAlleFragenActivity", "Fehler aufgetreten");
-        }
-
-
     }
 
+    public void frageEinblenden(View view) {
 
+        //Log.d("DSAlleFragenActiviry","frage einblenden");
+        tvAnswer.setVisibility(View.VISIBLE);
 
-
-
+    }
 }
