@@ -3,14 +3,14 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="campus02_yellow">#fffbad</color>
+    <color name="campus02_yellow">#add3ff</color> <!--umgenennen in "backgroundb"-->
     <color name="yellow">#fced4c</color>
     <color name="campus02_blue">#453c74</color>
     <color name="campus02_darkgray">#555555</color>
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
     <color name="green">#6ea443</color>
-    <color name="red">#e65a6a</color>
+    <color name="red">#ff808e</color>
     <color name="lightgrey">#d4d4d4</color>
 
 </resources>

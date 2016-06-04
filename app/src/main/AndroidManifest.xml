@@ -20,6 +20,8 @@
         android:theme="@style/AppTheme">
 
         <!-- android:icon="@mipmap/dt_app_icon" -->
+    <!-- android:icon="@mipmap/dt_app_icon"
+        android:icon="@drawable/campus02_logo"-->
 
         <activity
             android:name=".MainActivity"
@@ -35,6 +37,7 @@
         <activity
             android:name=".FrageAnzeigenActivity"
             android:label="@string/app_name"
+            android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait" />
         <!--
              ATTENTION: This was auto-generated to add Google Play services to your project for

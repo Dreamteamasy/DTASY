@@ -10,36 +10,43 @@
     android:background="@color/campus02_yellow"
     tools:context=".FrageAnzeigenActivity"
     android:orientation="vertical"
-    android:weightSum="1">
+    android:weightSum="1"
+    android:fitsSystemWindows="true">
 
 
     <Button
-        android:layout_width="300dp"
-        android:layout_height="70dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="@string/alle_kaetg_btn"
         android:id="@+id/alleKategorien"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="25dp"
+        android:paddingTop="@dimen/feldpadding"
+        android:paddingBottom="@dimen/feldpadding"
         android:onClick="alleKategorien"
-        android:textSize="20dp" />
+        android:textSize="@dimen/textgroesse" />
 
     <Button
-        android:layout_width="300dp"
-        android:layout_height="70dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="@string/eine_kateg_btn"
         android:id="@+id/kategorie"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="50dp"
-        android:textSize="20dp"
+        android:layout_marginTop="25dp"
+        android:paddingBottom="@dimen/feldpadding"
+        android:paddingTop="@dimen/feldpadding"
+        android:textSize="@dimen/textgroesse"
         android:onClick="kategorie"/>
 
     <Button
-        android:layout_width="300dp"
-        android:layout_height="70dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="@string/umgebung_kateg_btn"
         android:id="@+id/umgebung"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="50dp"
-        android:textSize="20dp"
+        android:layout_marginTop="25dp"
+        android:paddingBottom="@dimen/feldpadding"
+        android:paddingTop="@dimen/feldpadding"
+        android:textSize="@dimen/textgroesse"
         android:onClick="umgebung"/>
 </LinearLayout>
