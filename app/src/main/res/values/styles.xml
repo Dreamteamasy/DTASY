@@ -21,7 +21,7 @@
     <style name="Heading1" parent="@android:style/TextAppearance.Medium">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColor">@color/campus02_blue</item>
+        <item name="android:textColor">@color/dt_blue</item>
         <item name="android:typeface">sans</item>
         <item name="android:textSize">22sp</item>
         <item name="android:gravity">center</item>
@@ -32,7 +32,7 @@
     <style name="StandardText" parent="@android:style/TextAppearance.Medium">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColor">@color/campus02_blue</item>
+        <item name="android:textColor">@color/dt_blue</item>
         <item name="android:typeface">sans</item>
         <item name="android:textSize">18sp</item>
         <item name="android:gravity">center</item>
@@ -43,7 +43,7 @@
     <style name="QuestionText" parent="@android:style/TextAppearance.Medium">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColor">@color/campus02_blue</item>
+        <item name="android:textColor">@color/dt_blue</item>
         <item name="android:background">@color/yellow</item>
         <item name="android:typeface">sans</item>
         <item name="android:textSize">18sp</item>
@@ -55,8 +55,8 @@
     <style name="HighScore" parent="@android:style/TextAppearance.Medium">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColor">@color/campus02_yellow</item>
-        <item name="android:background">@color/campus02_blue</item>
+        <item name="android:textColor">@color/dt_yellow</item>
+        <item name="android:background">@color/dt_blue</item>
         <item name="android:typeface">sans</item>
         <item name="android:textSize">20sp</item>
         <item name="android:gravity">center</item>

@@ -7,14 +7,14 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@color/campus02_yellow"
+    android:background="@color/dt_yellow"
     tools:context=".FrageAnzeigenActivity"
     android:orientation="vertical"
     android:weightSum="1">
 
 
     <Button
-        android:layout_width="300dp"
+        android:layout_width="match_parent"
         android:layout_height="70dp"
         android:text="@string/alle_kaetg_btn"
         android:id="@+id/alleKategorien"
@@ -24,7 +24,7 @@
         android:textSize="20dp" />
 
     <Button
-        android:layout_width="300dp"
+        android:layout_width="match_parent"
         android:layout_height="70dp"
         android:text="@string/eine_kateg_btn"
         android:id="@+id/kategorie"
@@ -34,7 +34,7 @@
         android:onClick="kategorie"/>
 
     <Button
-        android:layout_width="300dp"
+        android:layout_width="match_parent"
         android:layout_height="70dp"
         android:text="@string/umgebung_kateg_btn"
         android:id="@+id/umgebung"

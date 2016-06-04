@@ -11,7 +11,7 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="at.campus02.asy.helloworld.FrageErstellenActivity"
     tools:showIn="@layout/activity_frage_erstellen"
-    android:background="@color/campus02_yellow">
+    android:background="@color/dt_yellow">
 
 
 
@@ -29,7 +29,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/frageText"
         android:layout_below="@+id/frage"
-        android:layout_alignStart="@+id/antwortText" />
+        android:textAlignment="center"
+        android:layout_centerHorizontal="true"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -45,7 +46,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/antwortText"
         android:layout_below="@+id/antwort"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textAlignment="center" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -61,7 +63,46 @@
         android:layout_height="wrap_content"
         android:id="@+id/schwierigkeitsgradText"
         android:layout_below="@+id/btn_schwierigkeitsgrad"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textAlignment="center"
+        android:hint="@string/schwierigkeitsgrade"/>
+
+    <!--<RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/radioBtns"
+        android:orientation="horizontal"
+        android:layout_below="@+id/btn_schwierigkeitsgrad"
+        android:layout_centerHorizontal="true">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Leicht"
+            android:id="@+id/radioButton1"
+            android:clickable="true"
+            android:checked="false"
+            android:contextClickable="true" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mittel"
+            android:id="@+id/radioButton2"
+            android:clickable="true"
+            android:contextClickable="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Schwer"
+            android:id="@+id/radioButton3"
+            android:clickable="true"
+            android:contextClickable="true" />
+    </RadioGroup>-->
 
     <TextView
         android:layout_width="wrap_content"
@@ -70,14 +111,16 @@
         android:id="@+id/kategorie"
         android:textSize="20dp"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/schwierigkeitsgradText" />
+        android:layout_below="@+id/schwierigkeitsgradText"
+        android:layout_marginTop="10dp" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/kategorieText"
         android:layout_below="@+id/kategorie"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textAlignment="center" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -89,13 +132,27 @@
         android:layout_below="@+id/kategorieText" />
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/lbGradView"
         style="@style/QuestionText"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/lGradView"
         android:paddingTop="20dp"
         android:paddingBottom="10dp"
-        android:layout_below="@+id/lbGrad" />
+        android:layout_below="@+id/lbGrad"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="10dp"
+        android:textAlignment="center" />
+
+    <TextView
+        style="@style/QuestionText"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/bGradView"
+        android:paddingTop="20dp"
+        android:paddingBottom="10dp"
+        android:layout_alignBottom="@+id/lGradView"
+        android:layout_toEndOf="@+id/bild"
+        android:textAlignment="center" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -103,26 +160,28 @@
         android:text="Bild"
         android:id="@+id/bild"
         android:textSize="20dp"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/lbGradView" />
+        android:layout_below="@+id/lGradView"
+        android:layout_centerHorizontal="true" />
 
-    <TextView
-        android:layout_width="match_parent"
+    <EditText
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/bildView"
-        style="@style/QuestionText"
-        android:paddingTop="20dp"
-        android:paddingBottom="10dp"
-        android:layout_below="@+id/bild" />
+        android:id="@+id/bildText"
+        android:layout_below="@+id/bild"
+        android:layout_centerHorizontal="true"
+        android:textAlignment="center" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/frage_erstellen_btn"
-        android:id="@+id/frageErstellen"
+        android:id="@+id/btnFrageErstellen"
         android:textSize="20dp"
-        android:layout_below="@+id/bildView"
+        android:layout_below="@+id/bildText"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp" />
+        android:onClick="frageSpeichern"/>
+
+
+
 
 </RelativeLayout>

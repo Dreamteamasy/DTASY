@@ -1,10 +1,15 @@
 package at.campus02.asy.helloworld;
 
+import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -13,11 +18,11 @@ import java.util.List;
 
 import at.campus02.asy.helloworld.objects.ElearningService;
 import at.campus02.asy.helloworld.objects.Question;
+import retrofit2.Call;
 import retrofit2.Callback;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-import retrofit2.Call;
-import retrofit2.Response;
 
 
 public class DSAlleFragenActivity extends AppCompatActivity
@@ -26,10 +31,11 @@ public class DSAlleFragenActivity extends AppCompatActivity
     private ElearningService service;
     private TextView tvQuestion;
     private TextView tvAnswer;
+    private Button btnVisible;
     public String frage;
     public String antwort;
-    public Question question;
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +56,10 @@ public class DSAlleFragenActivity extends AppCompatActivity
 
         tvQuestion = (TextView) findViewById(R.id.frage);
         tvAnswer = (TextView) findViewById(R.id.antwort);
+        btnVisible = (Button) findViewById(R.id.antwortEinblenden);
+        assert btnVisible != null;
+        btnVisible.setTag(1);
+        btnVisible.setText("Antwort einblenden");
 
 
         //Retrofit
@@ -65,16 +75,9 @@ public class DSAlleFragenActivity extends AppCompatActivity
             public void onResponse(Call<List<Question>> call, Response<List<Question>> response) {
                 // TODO
                 List<Question> list = response.body();
-
                 Collections.shuffle(list);
-
-                // ggfs. kürzen
-
                 List<Question> result = new ArrayList<Question>();
-
-                result = list.subList(0,10);
-
-                result.iterator().next();
+                result = list.subList(0,2);
 
                 for(Question q: result)
                 {
@@ -85,24 +88,47 @@ public class DSAlleFragenActivity extends AppCompatActivity
                         tvAnswer.setText(antwort);
                     }
                     else{
-                        Log.d("DSAlleFragenActivity", "Fehler aufgetreten");
+                        Log.v("DSAlleFragenActivity", "Fehler aufgetreten");
                     }
                 }
             }
 
             @Override
             public void onFailure(Call<List<Question>> call, Throwable t) {
-
-                Log.v("DSAlleFragenActivity", "Fehler aufgetreten", t);
-
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(DSAlleFragenActivity.this);
+                alertDialog.setMessage("Ein Fehler ist aufgetreten!");
+                alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog,int which) {
+                        Intent intent = new Intent(DSAlleFragenActivity.this, MainActivity.class);
+                        startActivity(intent);
+                    }
+                });
+                alertDialog.show();
             }
         });
     }
 
     public void frageEinblenden(View view) {
+        final int status =(Integer) view.getTag();
+        if(status == 1) {
+            btnVisible.setText("Antwort ausblenden");
+            tvAnswer.setVisibility(View.VISIBLE);
+            view.setTag(0); //pause
+        } else {
+            btnVisible.setText("Antwort einblenden");
+            tvAnswer.setVisibility(View.INVISIBLE);
+            view.setTag(1); //pause
+        }
+    }
 
-        //Log.d("DSAlleFragenActiviry","frage einblenden");
-        tvAnswer.setVisibility(View.VISIBLE);
+    public void next(View view) {
+        Intent intentGame = new Intent(this, DSAlleFragenActivity.class);
+        startActivity(intentGame);
+    }
 
+
+    public void backToMain(View view) {
+        Intent intentGame = new Intent(this, MainActivity.class);
+        startActivity(intentGame);
     }
 }

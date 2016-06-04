@@ -10,6 +10,8 @@
     <string name="alle_kaetg_btn">Alle Kategorien</string>
     <string name="eine_kateg_btn">Kategorie...</string>
     <string name="umgebung_kateg_btn">Frage in der Umgebung</string>
+    <string name="next">Nächste Frage</string>
+    <string name="backToMain">Zurück zum Hauptbildschirm</string>
 
     <!-- Einstellungen -->
     <string name="einstellungen_btn">Einstellungen</string>
@@ -91,5 +93,6 @@
     <string name="title_activity_settings">Einstellungen</string>
     <string name="title_activity_dskategorie">DSKategorieActivity</string>
     <string name="title_activity_dsumgebung">DSUmgebungActivity</string>
+    <string name="schwierigkeitsgrade">1 (leicht), 2 (mittel), 3 (schwer)</string>
 
 </resources>

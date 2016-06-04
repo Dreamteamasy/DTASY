@@ -1,24 +1,41 @@
 package at.campus02.asy.helloworld;
 
-import android.net.Uri;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RadioGroup;
+import android.widget.TextView;
 
-import com.google.android.gms.appindexing.Action;
-import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.common.api.GoogleApiClient;
+import at.campus02.asy.helloworld.objects.ElearningService;
+import at.campus02.asy.helloworld.objects.GPSTracker;
+import at.campus02.asy.helloworld.objects.Question;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class FrageErstellenActivity extends AppCompatActivity {
 
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
-    private GoogleApiClient client;
+    private Retrofit retrofit;
+    private ElearningService service;
+    private EditText etFrage;
+    private EditText etAntwort;
+    private EditText etKategorie;
+    private EditText etBild;
+    private EditText etSchwierigkeitsgrad;
+    private String grade;
+    private RadioGroup radioGroup;
+    private Question question = new Question();
+    GPSTracker gps;
+    private int id = 1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,58 +44,86 @@ public class FrageErstellenActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        if (fab != null) {
-            fab.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
-                }
-            });
-        }*/
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
-    }
+        etFrage = (EditText) findViewById(R.id.frageText);
+        etAntwort = (EditText) findViewById(R.id.antwortText);
+        etKategorie = (EditText) findViewById(R.id.kategorieText);
+        etBild = (EditText) findViewById(R.id.bildText);
+        etSchwierigkeitsgrad = (EditText) findViewById(R.id.schwierigkeitsgradText);
+        //TextView tvLängengrad = (TextView) findViewById(R.id.lGradView);
+        //TextView tvBreitengrad = (TextView) findViewById(R.id.bGradView);
+        //radioGroup = (RadioGroup) findViewById(R.id.radioBtns);
+        Button btnSave = (Button) findViewById(R.id.btnFrageErstellen);
 
-    @Override
-    public void onStart() {
-        super.onStart();
 
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client.connect();
-        Action viewAction = Action.newAction(
-                Action.TYPE_VIEW, // TODO: choose an action type.
-                "FrageErstellen Page", // TODO: Define a title for the content shown.
-                // TODO: If you have web page content that matches this app activity's content,
-                // make sure this auto-generated web page URL is correct.
-                // Otherwise, set the URL to null.
-                Uri.parse("http://host/path"),
-                // TODO: Make sure this auto-generated app URL is correct.
-                Uri.parse("android-app://at.campus02.asy.helloworld/http/host/path")
-        );
-        AppIndex.AppIndexApi.start(client, viewAction);
-    }
+        //Retrofit
+        retrofit = new Retrofit.Builder()
+                .baseUrl("http://campus02learningapp.azurewebsites.net/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
 
-    @Override
-    public void onStop() {
-        super.onStop();
+        // check if GPS enabled
+        GPSTracker gpsTracker = new GPSTracker(this);
 
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        Action viewAction = Action.newAction(
-                Action.TYPE_VIEW, // TODO: choose an action type.
-                "FrageErstellen Page", // TODO: Define a title for the content shown.
-                // TODO: If you have web page content that matches this app activity's content,
-                // make sure this auto-generated web page URL is correct.
-                // Otherwise, set the URL to null.
-                Uri.parse("http://host/path"),
-                // TODO: Make sure this auto-generated app URL is correct.
-                Uri.parse("android-app://at.campus02.asy.helloworld/http/host/path")
-        );
-        AppIndex.AppIndexApi.end(client, viewAction);
-        client.disconnect();
+        if (gpsTracker.getIsGPSTrackingEnabled())
+        {
+            String stringLatitude = String.valueOf(gpsTracker.latitude);
+            TextView tvBreitengrad = (TextView) findViewById(R.id.bGradView);
+            tvBreitengrad.setText(stringLatitude);
+
+            String stringLongitude = String.valueOf(gpsTracker.longitude);
+            TextView tvLängengrad = (TextView) findViewById(R.id.lGradView);
+            tvLängengrad.setText(stringLongitude);
+
+            grade = stringLatitude + ";" + stringLongitude;
+        }
+        else {
+            gpsTracker.showSettingsAlert();
+        }
+     }
+
+    public void frageSpeichern(View view) {
+        /*radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int checkedId)
+            {
+                RadioButton checkedRadioButton = (RadioButton) findViewById(checkedId);
+                Integer id = checkedRadioButton.getId();
+                String text = id.toString();
+                question.Schwierigkeitsgrad = text;
+            }
+        });*/
+        service = retrofit.create(ElearningService.class);
+        service.createQuestion(question).enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                question.FrageID = "Nummer: " + String.valueOf(id);
+                question.Fragetext = etFrage.getText().toString();
+                question.Antwort = etAntwort.getText().toString();
+                question.Schwierigkeitsgrad = etSchwierigkeitsgrad.getText().toString();
+                question.Kategorie = etKategorie.getText().toString();
+                question.LaengenUndBreitengrad = grade;
+                question.Bild = etBild.getText().toString();
+                service.createQuestion(question);
+                id = id++;
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(FrageErstellenActivity.this);
+                alertDialog.setMessage("Ein Fehler ist aufgetreten!");
+                alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog,int which) {
+                        Intent intent = new Intent(FrageErstellenActivity.this, MainActivity.class);
+                        startActivity(intent);
+                    }
+                });
+                alertDialog.show();
+            }
+        });
+
+        Intent intentGame = new Intent(this, MainActivity.class);
+        startActivity(intentGame);
+
     }
 }

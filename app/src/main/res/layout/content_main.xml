@@ -11,7 +11,7 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="at.campus02.asy.helloworld.MainActivity"
     tools:showIn="@layout/activity_main"
-    android:background="@color/campus02_yellow">
+    android:background="@color/dt_yellow">
 
     <TextView
         android:layout_width="match_parent"
@@ -35,35 +35,38 @@
 
     <Button
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="70dp"
         android:text="@string/frage_anzeigen_btn"
         android:id="@+id/frageAnzeigen"
         android:layout_centerHorizontal="true"
         android:paddingTop="20dp"
         android:paddingBottom="20dp"
         android:onClick="frageAnzeigen"
-        android:layout_marginTop="150dp"/>
+        android:layout_marginTop="150dp"
+        android:textSize="20dp"/>
 
     <Button
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="70dp"
         android:text="@string/frage_erstellen_btn"
         android:id="@+id/frageErstellen"
         android:layout_centerHorizontal="true"
         android:paddingTop="20dp"
         android:paddingBottom="20dp"
         android:onClick="frageErstellen"
-        android:layout_marginTop="250dp"/>
+        android:layout_marginTop="250dp"
+        android:textSize="20dp"/>
 
     <Button
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="70dp"
         android:text="@string/einstellungen_btn"
         android:id="@+id/einstellungen"
         android:layout_centerHorizontal="true"
         android:paddingTop="20dp"
         android:paddingBottom="20dp"
         android:onClick="einstellungen"
-        android:layout_marginTop="350dp"/>
+        android:layout_marginTop="350dp"
+        android:textSize="20dp"/>
 
 </RelativeLayout>
