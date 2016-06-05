@@ -6,5 +6,7 @@
     android:fitsSystemWindows="true"
     tools:context="at.campus02.asy.helloworld.BenutzernameActivity">
 
+
+
     <include layout="@layout/content_benutzername" />
 </android.support.design.widget.CoordinatorLayout>
