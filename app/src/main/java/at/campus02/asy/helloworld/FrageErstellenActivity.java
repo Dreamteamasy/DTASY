@@ -6,10 +6,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import at.campus02.asy.helloworld.objects.ElearningService;
@@ -33,6 +36,7 @@ public class FrageErstellenActivity extends AppCompatActivity {
     private String grade;
     private RadioGroup radioGroup;
     private Question question = new Question();
+    private Spinner kategDropdown;
     GPSTracker gps;
     private int id = 1;
 
@@ -46,12 +50,9 @@ public class FrageErstellenActivity extends AppCompatActivity {
 
         etFrage = (EditText) findViewById(R.id.frageText);
         etAntwort = (EditText) findViewById(R.id.antwortText);
-        etKategorie = (EditText) findViewById(R.id.kategorieText);
+        //etKategorie = (EditText) findViewById(R.id.kategorieText);
         etBild = (EditText) findViewById(R.id.bildText);
         etSchwierigkeitsgrad = (EditText) findViewById(R.id.schwierigkeitsgradText);
-        //TextView tvLängengrad = (TextView) findViewById(R.id.lGradView);
-        //TextView tvBreitengrad = (TextView) findViewById(R.id.bGradView);
-        //radioGroup = (RadioGroup) findViewById(R.id.radioBtns);
         Button btnSave = (Button) findViewById(R.id.btnFrageErstellen);
 
 
@@ -60,6 +61,33 @@ public class FrageErstellenActivity extends AppCompatActivity {
                 .baseUrl("http://campus02learningapp.azurewebsites.net/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
+
+        //get Kategorien from Service
+        this.service = retrofit.create(ElearningService.class);
+        this.service.categories().enqueue(new Callback<String[]>() {
+            @Override
+            public void onResponse(Call<String[]> call, Response<String[]> response) {
+                // TODO
+                String[] kategorien = response.body();
+                kategDropdown = (Spinner)findViewById(R.id.kategDropdown);
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(FrageErstellenActivity.this, android.R.layout.simple_spinner_dropdown_item, kategorien);
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                kategDropdown.setAdapter(adapter);
+        }
+
+            @Override
+            public void onFailure(Call<String[]> call, Throwable t) {
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(FrageErstellenActivity.this);
+                alertDialog.setMessage("Ein Fehler ist aufgetreten!");
+                alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog,int which) {
+                        Intent intent = new Intent(FrageErstellenActivity.this, MainActivity.class);
+                        startActivity(intent);
+                    }
+                });
+                alertDialog.show();
+            }
+        });
 
         // check if GPS enabled
         GPSTracker gpsTracker = new GPSTracker(this);
@@ -101,11 +129,24 @@ public class FrageErstellenActivity extends AppCompatActivity {
                 question.Fragetext = etFrage.getText().toString();
                 question.Antwort = etAntwort.getText().toString();
                 question.Schwierigkeitsgrad = etSchwierigkeitsgrad.getText().toString();
-                question.Kategorie = etKategorie.getText().toString();
+                question.Kategorie = kategDropdown.getSelectedItem().toString();
                 question.LaengenUndBreitengrad = grade;
                 question.Bild = etBild.getText().toString();
-                service.createQuestion(question);
-                id = id++;
+                if(etFrage.toString().length() != 0 || etAntwort.toString().length() != 0 || etSchwierigkeitsgrad.toString().length() != 0
+                        || grade.length() != 0 || etBild.toString().length() != 0 || question != null) {
+                    Log.v("FrageErstellenActivity", "Hello");
+                    service.createQuestion(question);
+                    id = id++;
+                }
+                else{
+                    AlertDialog.Builder alertDialog = new AlertDialog.Builder(FrageErstellenActivity.this);
+                    alertDialog.setMessage("Bitte alle Felder ausfüllen!");
+                    alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog,int which) {
+                        }
+                    });
+                    alertDialog.show();
+                }
             }
 
             @Override

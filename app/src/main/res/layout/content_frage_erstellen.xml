@@ -112,15 +112,40 @@
         android:textSize="20dp"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/schwierigkeitsgradText"
-        android:layout_marginTop="10dp" />
+        android:layout_marginTop="10dp"
+        android:textAlignment="center" />
 
-    <EditText
+    <!--<EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/kategorieText"
         android:layout_below="@+id/kategorie"
         android:layout_centerHorizontal="true"
-        android:textAlignment="center" />
+        android:textAlignment="center" />-->
+
+    <!--<Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/kategorieDropdown"
+        android:layout_below="@+id/kategorie"
+        android:layout_centerHorizontal="true"
+        android:textAlignment="center"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown"
+        android:padding="1dp" />-->
+
+    <Spinner
+        android:id="@+id/kategDropdown"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown"
+        android:layout_below="@+id/kategorie"
+        android:textAlignment="center"
+        android:layout_centerInParent="true"
+        android:clickable="true"
+        android:contextClickable="true"
+        />
 
     <TextView
         android:layout_width="wrap_content"
@@ -129,17 +154,17 @@
         android:id="@+id/lbGrad"
         android:textSize="20dp"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/kategorieText" />
+        android:layout_below="@+id/kategDropdown" />
 
     <TextView
         style="@style/QuestionText"
         android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:id="@+id/lGradView"
-        android:paddingTop="20dp"
+        android:paddingTop="10dp"
         android:paddingBottom="10dp"
         android:layout_below="@+id/lbGrad"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="5dp"
         android:layout_marginBottom="10dp"
         android:textAlignment="center" />
 
@@ -148,7 +173,7 @@
         android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:id="@+id/bGradView"
-        android:paddingTop="20dp"
+        android:paddingTop="10dp"
         android:paddingBottom="10dp"
         android:layout_alignBottom="@+id/lGradView"
         android:layout_toEndOf="@+id/bild"
@@ -169,7 +194,8 @@
         android:id="@+id/bildText"
         android:layout_below="@+id/bild"
         android:layout_centerHorizontal="true"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:hint="http://..."/>
 
     <Button
         android:layout_width="wrap_content"
@@ -180,8 +206,6 @@
         android:layout_below="@+id/bildText"
         android:layout_centerHorizontal="true"
         android:onClick="frageSpeichern"/>
-
-
 
 
 </RelativeLayout>
