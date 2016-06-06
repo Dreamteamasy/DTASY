@@ -15,6 +15,8 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 import at.campus02.asy.helloworld.objects.ElearningService;
 import at.campus02.asy.helloworld.objects.GPSTracker;
 import at.campus02.asy.helloworld.objects.Question;
@@ -68,7 +70,13 @@ public class FrageErstellenActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<String[]> call, Response<String[]> response) {
                 // TODO
-                String[] kategorien = response.body();
+                String[] kategorienTmp = response.body();
+                ArrayList<String> kategorien = new ArrayList<String>();
+                for(String aktWert : kategorienTmp){
+                    if(aktWert != null){
+                        kategorien.add(aktWert);
+                    }
+                }
                 kategDropdown = (Spinner)findViewById(R.id.kategDropdown);
                 ArrayAdapter<String> adapter = new ArrayAdapter<String>(FrageErstellenActivity.this, android.R.layout.simple_spinner_dropdown_item, kategorien);
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -122,49 +130,54 @@ public class FrageErstellenActivity extends AppCompatActivity {
             }
         });*/
         service = retrofit.create(ElearningService.class);
-        service.createQuestion(question).enqueue(new Callback<String>() {
-            @Override
-            public void onResponse(Call<String> call, Response<String> response) {
-                question.FrageID = "Nummer: " + String.valueOf(id);
-                question.Fragetext = etFrage.getText().toString();
-                question.Antwort = etAntwort.getText().toString();
-                question.Schwierigkeitsgrad = etSchwierigkeitsgrad.getText().toString();
-                question.Kategorie = kategDropdown.getSelectedItem().toString();
-                question.LaengenUndBreitengrad = grade;
-                question.Bild = etBild.getText().toString();
-                if(etFrage.toString().length() != 0 || etAntwort.toString().length() != 0 || etSchwierigkeitsgrad.toString().length() != 0
-                        || grade.length() != 0 || etBild.toString().length() != 0 || question != null) {
-                    Log.v("FrageErstellenActivity", "Hello");
-                    service.createQuestion(question);
-                    id = id++;
+
+        question.FrageID = "Nummer: " + String.valueOf(id);
+        question.Fragetext = etFrage.getText().toString();
+        question.Antwort = etAntwort.getText().toString();
+        question.Schwierigkeitsgrad = etSchwierigkeitsgrad.getText().toString();
+        question.Kategorie = kategDropdown.getSelectedItem().toString();
+        question.LaengenUndBreitengrad = grade;
+        question.Bild = etBild.getText().toString();
+
+        if(etFrage.toString().length() != 0 && etAntwort.toString().length() != 0 && etSchwierigkeitsgrad.toString().length() != 0
+                && grade.length() != 0 && /*etBild.toString().length() != 0 ||*/ question != null) {
+            Log.v("FrageErstellenActivity", "Hello");
+
+            service.createQuestion(question).enqueue(new Callback<String>() {
+                @Override
+                public void onResponse(Call<String> call, Response<String> response) {
+
                 }
-                else{
+
+                @Override
+                public void onFailure(Call<String> call, Throwable t) {
                     AlertDialog.Builder alertDialog = new AlertDialog.Builder(FrageErstellenActivity.this);
-                    alertDialog.setMessage("Bitte alle Felder ausfüllen!");
+                    alertDialog.setMessage("Ein Fehler ist aufgetreten!");
                     alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog,int which) {
+                            Intent intent = new Intent(FrageErstellenActivity.this, MainActivity.class);
+                            startActivity(intent);
                         }
                     });
                     alertDialog.show();
                 }
-            }
+            });
 
-            @Override
-            public void onFailure(Call<String> call, Throwable t) {
-                AlertDialog.Builder alertDialog = new AlertDialog.Builder(FrageErstellenActivity.this);
-                alertDialog.setMessage("Ein Fehler ist aufgetreten!");
-                alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog,int which) {
-                        Intent intent = new Intent(FrageErstellenActivity.this, MainActivity.class);
-                        startActivity(intent);
-                    }
-                });
-                alertDialog.show();
-            }
-        });
+            Intent intentGame = new Intent(this, MainActivity.class);
+            startActivity(intentGame);
+        }
 
-        Intent intentGame = new Intent(this, MainActivity.class);
-        startActivity(intentGame);
+        else {
+            AlertDialog.Builder alertDialog = new AlertDialog.Builder(FrageErstellenActivity.this);
+            alertDialog.setMessage("Bitte alle Felder ausfüllen!");
+            alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                }
+            });
+            alertDialog.show();
+        }
+
+
 
     }
 }

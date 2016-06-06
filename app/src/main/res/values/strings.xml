@@ -26,7 +26,7 @@
     <string name="umkreis_txt">Aus welchem Umkreis sollen die Fragen gestellt werden?</string>
     <string name="schwierigkeit_txt">Wie schwer sollen die Fragen sein?</string>
     <string name="schwierigkeit_s0_rb">leicht (Stufe 0)</string>
-    <string name="schwierigkeit_s1_rb">normal (Stufe 1)</string>
+    <string name="schwierigkeit_s1_rb">mittel (Stufe 1)</string>
     <string name="schwierigkeit_s2_rb">schwer (Stufe 2)</string>
     <string name="schwierigkeit_s3_rb">sehr schwer (Stufe 3)</string>
     <string name="schwierigkeit_sa_rb">alle Stufen</string>
@@ -93,6 +93,6 @@
     <string name="title_activity_settings">Einstellungen</string>
     <string name="title_activity_dskategorie">DSKategorieActivity</string>
     <string name="title_activity_dsumgebung">DSUmgebungActivity</string>
-    <string name="schwierigkeitsgrade">1 (leicht), 2 (mittel), 3 (schwer)</string>
+    <string name="schwierigkeitsgrade">0 (leicht), 1 (mittel), 2 (schwer), 3 (sehr schwer)</string>
 
 </resources>

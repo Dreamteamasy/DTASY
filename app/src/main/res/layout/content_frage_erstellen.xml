@@ -12,7 +12,13 @@
     tools:context="at.campus02.asy.helloworld.FrageErstellenActivity"
     tools:showIn="@layout/activity_frage_erstellen">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
     <TextView
         android:layout_width="wrap_content"
@@ -42,13 +48,13 @@
         android:layout_below="@+id/frageText"
         android:textStyle="bold|italic"/>
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/antwortText"
-        android:layout_below="@+id/antwort"
-        android:layout_centerHorizontal="true"
-        android:textAlignment="center" />
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/antwortText"
+                android:layout_below="@+id/antwort"
+                android:layout_centerHorizontal="true"
+                android:textAlignment="center" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -60,51 +66,52 @@
         android:layout_below="@+id/antwortText"
         android:textStyle="bold|italic"/>
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/schwierigkeitsgradText"
-        android:layout_below="@+id/btn_schwierigkeitsgrad"
-        android:layout_centerHorizontal="true"
-        android:textAlignment="center"
-        android:hint="@string/schwierigkeitsgrade"/>
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/schwierigkeitsgradText"
+                android:layout_below="@+id/btn_schwierigkeitsgrad"
+                android:layout_centerHorizontal="true"
+                android:textAlignment="center"
+                android:hint="@string/schwierigkeitsgrade"
+                android:inputType="number"/>
 
-    <!--<RadioGroup
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/radioBtns"
-        android:orientation="horizontal"
-        android:layout_below="@+id/btn_schwierigkeitsgrad"
-        android:layout_centerHorizontal="true">
+            <!--<RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/radioBtns"
+                android:orientation="horizontal"
+                android:layout_below="@+id/btn_schwierigkeitsgrad"
+                android:layout_centerHorizontal="true">
 
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Leicht"
-            android:id="@+id/radioButton1"
-            android:clickable="true"
-            android:checked="false"
-            android:contextClickable="true" />
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Leicht"
+                    android:id="@+id/radioButton1"
+                    android:clickable="true"
+                    android:checked="false"
+                    android:contextClickable="true" />
 
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Mittel"
-            android:id="@+id/radioButton2"
-            android:clickable="true"
-            android:contextClickable="true"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp" />
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mittel"
+                    android:id="@+id/radioButton2"
+                    android:clickable="true"
+                    android:contextClickable="true"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp" />
 
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Schwer"
-            android:id="@+id/radioButton3"
-            android:clickable="true"
-            android:contextClickable="true" />
-    </RadioGroup>-->
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Schwer"
+                    android:id="@+id/radioButton3"
+                    android:clickable="true"
+                    android:contextClickable="true" />
+            </RadioGroup>-->
 
     <TextView
         android:layout_width="wrap_content"
@@ -116,7 +123,8 @@
         android:layout_below="@+id/schwierigkeitsgradText"
         android:layout_marginTop="10dp"
         android:textAlignment="center"
-        android:textStyle="bold|italic"/>
+        android:textStyle="bold|italic"
+        />
 
     <!--<EditText
         android:layout_width="wrap_content"
@@ -203,15 +211,19 @@
         android:textAlignment="center"
         android:hint="http://..."/>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/frage_erstellen_btn"
-        android:id="@+id/btnFrageErstellen"
-        android:textSize="20dp"
-        android:layout_below="@+id/bildText"
-        android:layout_centerHorizontal="true"
-        android:onClick="frageSpeichern"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/frage_erstellen_btn"
+                android:id="@+id/btnFrageErstellen"
+                android:textSize="20dp"
+                android:layout_below="@+id/bildText"
+                android:layout_centerHorizontal="true"
+                android:paddingBottom="@dimen/feldpadding"
+                android:paddingTop="@dimen/feldpadding"
+                android:onClick="frageSpeichern"/>
 
+        </RelativeLayout>
+    </ScrollView>
 
 </RelativeLayout>
