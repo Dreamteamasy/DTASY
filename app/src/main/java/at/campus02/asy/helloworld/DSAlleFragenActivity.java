@@ -27,13 +27,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class DSAlleFragenActivity extends AppCompatActivity
 {
-    private Retrofit retrofit;
-    private ElearningService service;
     private TextView tvQuestion;
     private TextView tvAnswer;
     private Button btnVisible;
-    public String frage;
-    public String antwort;
+    private String frage;
+    private String antwort;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -57,27 +55,33 @@ public class DSAlleFragenActivity extends AppCompatActivity
         tvQuestion = (TextView) findViewById(R.id.frage);
         tvAnswer = (TextView) findViewById(R.id.antwort);
         btnVisible = (Button) findViewById(R.id.antwortEinblenden);
-        assert btnVisible != null;
-        btnVisible.setTag(1);
-        btnVisible.setText("Antwort einblenden");
+        if (btnVisible != null) {
+            btnVisible.setTag(1);
+            btnVisible.setText("Antwort einblenden");
+        }
 
 
         //Retrofit
-        retrofit = new Retrofit.Builder()
+        Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://campus02learningapp.azurewebsites.net/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        this.service = retrofit.create(ElearningService.class);
+        ElearningService service = retrofit.create(ElearningService.class);
 
-        this.service.list().enqueue(new Callback<List<Question>>() {
+        service.list().enqueue(new Callback<List<Question>>() {
             @Override
             public void onResponse(Call<List<Question>> call, Response<List<Question>> response) {
                 // TODO
                 List<Question> list = response.body();
                 Collections.shuffle(list);
                 List<Question> result = new ArrayList<Question>();
-                result = list.subList(0,2);
+                if(list.size() > 10){
+                    result = list.subList(0,10);
+                }
+                else{
+                    result = list;
+                }
 
                 for(Question q: result)
                 {
@@ -108,7 +112,7 @@ public class DSAlleFragenActivity extends AppCompatActivity
         });
     }
 
-    public void frageEinblenden(View view) {
+    public void antwortEinblenden(View view) {
         final int status =(Integer) view.getTag();
         if(status == 1) {
             btnVisible.setText("Antwort ausblenden");

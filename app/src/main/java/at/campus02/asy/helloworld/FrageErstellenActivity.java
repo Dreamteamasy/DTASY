@@ -3,10 +3,12 @@ package at.campus02.asy.helloworld;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -14,6 +16,7 @@ import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import at.campus02.asy.helloworld.objects.ElearningService;
 import at.campus02.asy.helloworld.objects.GPSTracker;
@@ -26,6 +29,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class FrageErstellenActivity extends AppCompatActivity {
 
+    private static final int MY_PERMISSIONS_REQUEST_READ_CONTACTS = 24601;
     private Retrofit retrofit;
     private ElearningService service;
     private EditText etFrage;
@@ -92,6 +96,41 @@ public class FrageErstellenActivity extends AppCompatActivity {
         // check if GPS enabled
         GPSTracker gpsTracker = new GPSTracker(this);
 
+        if(ContextCompat.checkSelfPermission(this, "android.permission.ACCESS_FINE_LOCATION") != PackageManager.PERMISSION_GRANTED
+                || ContextCompat.checkSelfPermission(this, "android.permission.ACCESS_NETWORK_STATE") != PackageManager.PERMISSION_GRANTED
+                || ContextCompat.checkSelfPermission(this, "android.permission.ACCESS_COARSE_LOCATION") != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this,
+                    new String[]{"android.permission.ACCESS_FINE_LOCATION", "android.permission.ACCESS_NETWORK_STATE", "android.permission.ACCESS_COARSE_LOCATION"},
+                    MY_PERMISSIONS_REQUEST_READ_CONTACTS);
+            return;
+        }
+
+        /*@Override
+        public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+
+            switch (requestCode) {
+                case MY_PERMISSIONS_REQUEST_READ_CONTACTS: {
+                    // If request is cancelled, the result arrays are empty.
+                    if (grantResults.length > 0
+                            && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                        loadNextQuestion();
+
+                        // permission was granted, yay! Do the
+                        // contacts-related task you need to do.
+
+                    } else {
+
+
+                        Toast.makeText(FrageErstellenActivity.this, "Berechtigungen nicht vorhanden", Toast.LENGTH_SHORT).show();
+
+                        onBackPressedInternal(true);
+                    }
+                    return;
+                }
+            }
+        }*/
+
         if (gpsTracker.getIsGPSTrackingEnabled())
         {
             String stringLatitude = String.valueOf(gpsTracker.latitude);
@@ -121,20 +160,21 @@ public class FrageErstellenActivity extends AppCompatActivity {
                 question.Schwierigkeitsgrad = text;
             }
         });*/
+
+        question.FrageID = "Nummer: " + String.valueOf(id);
+        question.Fragetext = etFrage.getText().toString();
+        question.Antwort = etAntwort.getText().toString();
+        question.Schwierigkeitsgrad = etSchwierigkeitsgrad.getText().toString();
+        question.Kategorie = kategDropdown.getSelectedItem().toString();
+        question.LaengenUndBreitengrad = grade;
+        question.Bild = etBild.getText().toString();
+
         service = retrofit.create(ElearningService.class);
         service.createQuestion(question).enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
-                question.FrageID = "Nummer: " + String.valueOf(id);
-                question.Fragetext = etFrage.getText().toString();
-                question.Antwort = etAntwort.getText().toString();
-                question.Schwierigkeitsgrad = etSchwierigkeitsgrad.getText().toString();
-                question.Kategorie = kategDropdown.getSelectedItem().toString();
-                question.LaengenUndBreitengrad = grade;
-                question.Bild = etBild.getText().toString();
                 if(etFrage.toString().length() != 0 || etAntwort.toString().length() != 0 || etSchwierigkeitsgrad.toString().length() != 0
                         || grade.length() != 0 || etBild.toString().length() != 0 || question != null) {
-                    Log.v("FrageErstellenActivity", "Hello");
                     service.createQuestion(question);
                     id = id++;
                 }
@@ -165,6 +205,8 @@ public class FrageErstellenActivity extends AppCompatActivity {
 
         Intent intentGame = new Intent(this, MainActivity.class);
         startActivity(intentGame);
-
+        Toast errorToast = Toast.makeText(getApplicationContext(),
+                "Frage erstellt", Toast.LENGTH_LONG);
+        errorToast.show();
     }
 }

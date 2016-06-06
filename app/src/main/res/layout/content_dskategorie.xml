@@ -12,4 +12,83 @@
     tools:context=".DSKategorieActivity"
     tools:showIn="@layout/activity_dskategorie">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/kText"
+        android:id="@+id/kText"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textSize="20dp"
+        android:textStyle="bold|italic"
+        android:textAlignment="center"/>
+
+    <Spinner
+        android:id="@+id/kKategDropdown"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown"
+        android:textAlignment="center"
+        android:clickable="true"
+        android:contextClickable="true"
+        android:layout_below="@+id/kText" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/kFrage"
+        style="@style/QuestionText"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:textSize="25dp"
+        android:layout_below="@+id/kKategDropdown"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="250dp"
+        android:layout_height="70dp"
+        android:id="@+id/kAntwortEinblenden"
+        android:textSize="20dp"
+        android:onClick="kAntwortEinblenden"
+        android:layout_below="@+id/kFrage"
+        android:layout_alignStart="@+id/kNext"
+        android:layout_marginTop="41dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/kAntwort"
+        style="@style/QuestionText"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:visibility="invisible"
+        android:textSize="25dp"
+        android:layout_below="@+id/kAntwortEinblenden"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="250dp"
+        android:layout_height="70dp"
+        android:text="@string/next"
+        android:id="@+id/kNext"
+        android:layout_marginTop="10dp"
+        android:textSize="20dp"
+        android:layout_below="@+id/kAntwort"
+        android:layout_centerHorizontal="true"
+        android:onClick="kNext"
+        />
+    <Button
+        android:layout_width="250dp"
+        android:layout_height="70dp"
+        android:text="@string/backToMain"
+        android:id="@+id/kBackToMain"
+        android:layout_marginTop="5dp"
+        android:textSize="20dp"
+        android:layout_below="@+id/kNext"
+        android:layout_centerHorizontal="true"
+        android:onClick="kBackToMain"
+        />
+
+
 </RelativeLayout>

@@ -18,7 +18,7 @@
         android:id="@+id/frage"
         style="@style/QuestionText"
         android:paddingTop="20dp"
-        android:paddingBottom="40dp"
+        android:paddingBottom="20dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -32,9 +32,7 @@
         android:textSize="20dp"
         android:layout_below="@+id/frage"
         android:layout_centerHorizontal="true"
-        android:onClick="frageEinblenden"
-        />
-        android:text="@string/einblenden"
+        android:onClick="antwortEinblenden" />
 
     <TextView
         android:layout_width="match_parent"
@@ -42,7 +40,7 @@
         android:id="@+id/antwort"
         style="@style/QuestionText"
         android:paddingTop="20dp"
-        android:paddingBottom="40dp"
+        android:paddingBottom="20dp"
         android:layout_marginTop="30dp"
         android:layout_below="@+id/antwortEinblenden"
         android:layout_alignParentRight="true"

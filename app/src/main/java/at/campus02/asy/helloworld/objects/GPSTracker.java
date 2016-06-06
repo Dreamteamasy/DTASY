@@ -20,16 +20,19 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
-import at.campus02.asy.helloworld.R;
+import at.campus02.asy.helloworld.FrageErstellenActivity;
 
 public class GPSTracker extends Service implements LocationListener {
 
+    private static final int MY_PERMISSIONS_REQUEST_READ_CONTACTS = 24601;
     // Get Class Name
     private static String TAG = GPSTracker.class.getName();
 
@@ -112,6 +115,14 @@ public class GPSTracker extends Service implements LocationListener {
 
             // Application can use GPS or Network Provider
             if (!provider_info.isEmpty()) {
+                // TODO: Consider calling
+//    ActivityCompat#requestPermissions
+// here to request the missing permissions, and then overriding
+//   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+//                                          int[] grantResults)
+// to handle the case where the user grants the permission. See the documentation
+// for ActivityCompat#requestPermissions for more details.
+
                 if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                     // TODO: Consider calling
                     //    ActivityCompat#requestPermissions

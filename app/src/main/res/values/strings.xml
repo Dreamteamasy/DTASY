@@ -12,6 +12,7 @@
     <string name="umgebung_kateg_btn">Frage in der Umgebung</string>
     <string name="next">Nächste Frage</string>
     <string name="backToMain">Zurück zum Hauptbildschirm</string>
+    <string name="kText">Wählen Sie eine Kategorie zu der Ihnen eine Frage angezeigt werden soll</string>
 
     <!-- Einstellungen -->
     <string name="einstellungen_btn">Einstellungen</string>

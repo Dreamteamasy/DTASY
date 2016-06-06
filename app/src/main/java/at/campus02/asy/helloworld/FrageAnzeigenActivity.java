@@ -20,12 +20,12 @@ public class FrageAnzeigenActivity extends AppCompatActivity {
     }
 
     public void kategorie(View view) {
-        Intent intentGame = new Intent(this, DSAlleFragenActivity.class);
+        Intent intentGame = new Intent(this, DSKategorieActivity.class);
         startActivity(intentGame);
     }
 
     public void umgebung(View view) {
-        Intent intentGame = new Intent(this, DSAlleFragenActivity.class);
+        Intent intentGame = new Intent(this, DSUmgebungActivity.class);
         startActivity(intentGame);
     }
 }
