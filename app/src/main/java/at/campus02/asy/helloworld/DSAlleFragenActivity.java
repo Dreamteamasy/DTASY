@@ -39,6 +39,7 @@ public class DSAlleFragenActivity extends AppCompatActivity
     private int round;
     public static final String MyPREFERENCES = "MyPrefs";
     public static final String Fragen = "FragenKey";
+    public static final String Runde = "RundeKey";
     SharedPreferences sharedPreferences;
 
     @SuppressLint("SetTextI18n")
@@ -136,21 +137,18 @@ public class DSAlleFragenActivity extends AppCompatActivity
     public void next(View view) {
         laden();
 
-        Intent intentGame = new Intent(this, DSAlleFragenActivity.class);
-        startActivity(intentGame);
         sharedPreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         String runden = sharedPreferences.getString(Fragen, "10");
         int rundenInt = Integer.parseInt(runden);
-        int rundeNew = getIntent().getIntExtra("Runde", 1);
+        int rundeNew = getIntent().getIntExtra(Runde, 1);
 
         if (rundeNew <= rundenInt) {
-            //round++;
-            intentGame = new Intent(this, DSAlleFragenActivity.class);
+            round++;
             Bundle localBundle = new Bundle();
-            localBundle.putInt("Runde", round++);
-            Intent pass = new Intent(this, DSAlleFragenActivity.class);
-            pass.putExtras(localBundle);
-            startActivity(intentGame);
+            localBundle.putInt(Runde, round);
+            Intent alleFragen = new Intent(this, DSAlleFragenActivity.class);
+            alleFragen.putExtras(localBundle);
+            startActivity(alleFragen);
         } else {
             AlertDialog.Builder alertDialog = new AlertDialog.Builder(DSAlleFragenActivity.this);
             alertDialog.setMessage("Das Spiel ist vorbei");
