@@ -2,6 +2,7 @@ package at.campus02.asy.helloworld;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -32,6 +34,7 @@ public class DSAlleFragenActivity extends AppCompatActivity
     private Button btnVisible;
     private String frage;
     private String antwort;
+    private ProgressDialog progbar;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -126,10 +129,40 @@ public class DSAlleFragenActivity extends AppCompatActivity
     }
 
     public void next(View view) {
+        laden();
+
         Intent intentGame = new Intent(this, DSAlleFragenActivity.class);
         startActivity(intentGame);
     }
 
+    private void laden(){
+        progbar = new ProgressDialog(this);
+        progbar.setMessage("Die nächste Frage wird geladen");
+        progbar.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+        progbar.setIndeterminate(true);
+        progbar.setProgress(0);
+        progbar.show();
+
+        final int totalProgressTime = 100;
+        final Thread t = new Thread() {
+            @Override
+            public void run() {
+                int jumpTime = 0;
+
+                while (jumpTime < totalProgressTime) {
+                    try {
+                        sleep(200);
+                        jumpTime += 5;
+                        progbar.setProgress(jumpTime);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+        };
+        t.start();
+    }
 
     public void backToMain(View view) {
         Intent intentGame = new Intent(this, MainActivity.class);

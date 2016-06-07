@@ -9,6 +9,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -17,6 +18,8 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
 
 import at.campus02.asy.helloworld.objects.ElearningService;
 import at.campus02.asy.helloworld.objects.GPSTracker;
@@ -72,7 +75,14 @@ public class FrageErstellenActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<String[]> call, Response<String[]> response) {
                 // TODO
-                String[] kategorien = response.body();
+                String[] kategorienTmp = response.body();
+                ArrayList<String> kategorien = new ArrayList<String>();
+                for(String aktWert : kategorienTmp){
+                    if(aktWert != null){
+                        kategorien.add(aktWert);
+                    }
+                }
+
                 kategDropdown = (Spinner)findViewById(R.id.kategDropdown);
                 ArrayAdapter<String> adapter = new ArrayAdapter<String>(FrageErstellenActivity.this, android.R.layout.simple_spinner_dropdown_item, kategorien);
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -160,6 +170,7 @@ public class FrageErstellenActivity extends AppCompatActivity {
                 question.Schwierigkeitsgrad = text;
             }
         });*/
+        service = retrofit.create(ElearningService.class);
 
         question.FrageID = "Nummer: " + String.valueOf(id);
         question.Fragetext = etFrage.getText().toString();
@@ -169,44 +180,49 @@ public class FrageErstellenActivity extends AppCompatActivity {
         question.LaengenUndBreitengrad = grade;
         question.Bild = etBild.getText().toString();
 
-        service = retrofit.create(ElearningService.class);
-        service.createQuestion(question).enqueue(new Callback<String>() {
-            @Override
-            public void onResponse(Call<String> call, Response<String> response) {
-                if(etFrage.toString().length() != 0 || etAntwort.toString().length() != 0 || etSchwierigkeitsgrad.toString().length() != 0
-                        || grade.length() != 0 || etBild.toString().length() != 0 || question != null) {
-                    service.createQuestion(question);
-                    id = id++;
+        if(etFrage.getText().toString().equals("") || etAntwort.getText().toString().equals("") || etSchwierigkeitsgrad.getText().toString().equals("")
+                || /*grade.length() != 0 || etBild.toString().length() != 0 ||*/ question != null) {
+            Toast infoToast = Toast.makeText(getApplicationContext(), "Bitte alle Felder ausfüllen!", Toast.LENGTH_SHORT);
+            infoToast.show();
+            /*AlertDialog.Builder alertDialog = new AlertDialog.Builder(FrageErstellenActivity.this);
+            alertDialog.setMessage("Bitte alle Felder ausfüllen!");
+            alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog,int which) {
                 }
-                else{
+            });
+            alertDialog.show();*/
+        }
+        else{
+
+            /*Log.v("FrageErstellenActivity", "Hello");*/
+
+            service.createQuestion(question).enqueue(new Callback<String>() {
+                @Override
+                public void onResponse(Call<String> call, Response<String> response) {
+                }
+
+                @Override
+                public void onFailure(Call<String> call, Throwable t) {
                     AlertDialog.Builder alertDialog = new AlertDialog.Builder(FrageErstellenActivity.this);
-                    alertDialog.setMessage("Bitte alle Felder ausfüllen!");
+                    alertDialog.setMessage("Ein Fehler ist aufgetreten!");
                     alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog,int which) {
+                            Intent intent = new Intent(FrageErstellenActivity.this, MainActivity.class);
+                            startActivity(intent);
                         }
                     });
                     alertDialog.show();
                 }
-            }
+            });
 
-            @Override
-            public void onFailure(Call<String> call, Throwable t) {
-                AlertDialog.Builder alertDialog = new AlertDialog.Builder(FrageErstellenActivity.this);
-                alertDialog.setMessage("Ein Fehler ist aufgetreten!");
-                alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog,int which) {
-                        Intent intent = new Intent(FrageErstellenActivity.this, MainActivity.class);
-                        startActivity(intent);
-                    }
-                });
-                alertDialog.show();
-            }
-        });
+            Intent intentGame = new Intent(this, MainActivity.class);
+            startActivity(intentGame);
+        }
 
-        Intent intentGame = new Intent(this, MainActivity.class);
+      /*  Intent intentGame = new Intent(this, MainActivity.class);
         startActivity(intentGame);
         Toast errorToast = Toast.makeText(getApplicationContext(),
                 "Frage erstellt", Toast.LENGTH_LONG);
-        errorToast.show();
+        errorToast.show();*/
     }
 }

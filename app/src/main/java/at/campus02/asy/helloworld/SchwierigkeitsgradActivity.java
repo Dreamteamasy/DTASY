@@ -65,9 +65,9 @@ public class SchwierigkeitsgradActivity extends AppCompatActivity {
             rgrpschwierigkeit.check(R.id.radstufealle);
         } else if(schwierigkeitsstufe.equals("leicht (Stufe 0)")){
             rgrpschwierigkeit.check(R.id.radstufe0);
-        } else if(schwierigkeitsstufe.equals("normal (Stufe 1)")){
+        } else if(schwierigkeitsstufe.equals("mittel (Stufe 1)")){
             rgrpschwierigkeit.check(R.id.radstufe1);
-        } else if(schwierigkeitsstufe.equals("schwer (Stufe 2")){
+        } else if(schwierigkeitsstufe.equals("schwer (Stufe 2)")){
             rgrpschwierigkeit.check(R.id.radstufe2);
         } else{
             rgrpschwierigkeit.check(R.id.radstufe3);

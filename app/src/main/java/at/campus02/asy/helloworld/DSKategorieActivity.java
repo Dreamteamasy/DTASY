@@ -1,6 +1,7 @@
 package at.campus02.asy.helloworld;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -34,6 +35,7 @@ public class DSKategorieActivity extends AppCompatActivity {
     private String frage;
     private String antwort;
     private Spinner kKategDropdown;
+    private ProgressDialog progbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -178,8 +180,38 @@ public class DSKategorieActivity extends AppCompatActivity {
     }
 
     public void kNext(View view) {
+        laden();
         Intent intentGame = new Intent(this, DSKategorieActivity.class);
         startActivity(intentGame);
+    }
+
+    private void laden(){
+        progbar = new ProgressDialog(this);
+        progbar.setMessage("Die nächste Frage wird geladen");
+        progbar.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+        progbar.setIndeterminate(true);
+        progbar.setProgress(0);
+        progbar.show();
+
+        final int totalProgressTime = 100;
+        final Thread t = new Thread() {
+            @Override
+            public void run() {
+                int jumpTime = 0;
+
+                while (jumpTime < totalProgressTime) {
+                    try {
+                        sleep(200);
+                        jumpTime += 5;
+                        progbar.setProgress(jumpTime);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+        };
+        t.start();
     }
 
     public void kBackToMain(View view) {
