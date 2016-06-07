@@ -180,49 +180,43 @@ public class FrageErstellenActivity extends AppCompatActivity {
         question.LaengenUndBreitengrad = grade;
         question.Bild = etBild.getText().toString();
 
-        if(etFrage.getText().toString().equals("") || etAntwort.getText().toString().equals("") || etSchwierigkeitsgrad.getText().toString().equals("")
-                || /*grade.length() != 0 || etBild.toString().length() != 0 ||*/ question != null) {
-            Toast infoToast = Toast.makeText(getApplicationContext(), "Bitte alle Felder ausfüllen!", Toast.LENGTH_SHORT);
-            infoToast.show();
-            /*AlertDialog.Builder alertDialog = new AlertDialog.Builder(FrageErstellenActivity.this);
-            alertDialog.setMessage("Bitte alle Felder ausfüllen!");
-            alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog,int which) {
+        service = retrofit.create(ElearningService.class);
+        service.createQuestion(question).enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                if(etFrage.toString().equals("") || etAntwort.toString().equals("") || etSchwierigkeitsgrad.toString().equals("") || etBild.toString().equals("") || question != null) {
+                    service.createQuestion(question);
+                    id = id++;
                 }
-            });
-            alertDialog.show();*/
-        }
-        else{
-
-            /*Log.v("FrageErstellenActivity", "Hello");*/
-
-            service.createQuestion(question).enqueue(new Callback<String>() {
-                @Override
-                public void onResponse(Call<String> call, Response<String> response) {
-                }
-
-                @Override
-                public void onFailure(Call<String> call, Throwable t) {
+                else{
                     AlertDialog.Builder alertDialog = new AlertDialog.Builder(FrageErstellenActivity.this);
-                    alertDialog.setMessage("Ein Fehler ist aufgetreten!");
+                    alertDialog.setMessage("Bitte alle Felder ausfüllen!");
                     alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog,int which) {
-                            Intent intent = new Intent(FrageErstellenActivity.this, MainActivity.class);
-                            startActivity(intent);
                         }
                     });
                     alertDialog.show();
                 }
-            });
+            }
 
-            Intent intentGame = new Intent(this, MainActivity.class);
-            startActivity(intentGame);
-        }
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(FrageErstellenActivity.this);
+                alertDialog.setMessage("Ein Fehler ist aufgetreten!");
+                alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog,int which) {
+                        Intent intent = new Intent(FrageErstellenActivity.this, MainActivity.class);
+                        startActivity(intent);
+                    }
+                });
+                alertDialog.show();
+            }
+        });
 
-      /*  Intent intentGame = new Intent(this, MainActivity.class);
+        Intent intentGame = new Intent(this, MainActivity.class);
         startActivity(intentGame);
         Toast errorToast = Toast.makeText(getApplicationContext(),
                 "Frage erstellt", Toast.LENGTH_LONG);
-        errorToast.show();*/
+        errorToast.show();
     }
 }

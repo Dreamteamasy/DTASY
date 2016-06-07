@@ -3,15 +3,16 @@ package at.campus02.asy.helloworld;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -35,6 +36,10 @@ public class DSAlleFragenActivity extends AppCompatActivity
     private String frage;
     private String antwort;
     private ProgressDialog progbar;
+    private int round;
+    public static final String MyPREFERENCES = "MyPrefs";
+    public static final String Fragen = "FragenKey";
+    SharedPreferences sharedPreferences;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -133,6 +138,30 @@ public class DSAlleFragenActivity extends AppCompatActivity
 
         Intent intentGame = new Intent(this, DSAlleFragenActivity.class);
         startActivity(intentGame);
+        sharedPreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+        String runden = sharedPreferences.getString(Fragen, "10");
+        int rundenInt = Integer.parseInt(runden);
+        int rundeNew = getIntent().getIntExtra("Runde", 1);
+
+        if (rundeNew <= rundenInt) {
+            //round++;
+            intentGame = new Intent(this, DSAlleFragenActivity.class);
+            Bundle localBundle = new Bundle();
+            localBundle.putInt("Runde", round++);
+            Intent pass = new Intent(this, DSAlleFragenActivity.class);
+            pass.putExtras(localBundle);
+            startActivity(intentGame);
+        } else {
+            AlertDialog.Builder alertDialog = new AlertDialog.Builder(DSAlleFragenActivity.this);
+            alertDialog.setMessage("Das Spiel ist vorbei");
+            alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                    Intent intent = new Intent(DSAlleFragenActivity.this, MainActivity.class);
+                    startActivity(intent);
+                }
+            });
+            alertDialog.show();
+        }
     }
 
     private void laden(){

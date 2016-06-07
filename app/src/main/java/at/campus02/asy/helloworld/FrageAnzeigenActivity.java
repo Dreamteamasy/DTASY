@@ -15,17 +15,17 @@ public class FrageAnzeigenActivity extends AppCompatActivity {
     }
 
     public void alleKategorien(View view) {
-        Intent intentGame = new Intent(this, DSAlleFragenActivity.class);
-        startActivity(intentGame);
+        Intent alleKategorien = new Intent(this, DSAlleFragenActivity.class);
+        startActivity(alleKategorien);
     }
 
     public void kategorie(View view) {
-        Intent intentGame = new Intent(this, DSKategorieActivity.class);
-        startActivity(intentGame);
+        Intent kategorie = new Intent(this, DSKategorieActivity.class);
+        startActivity(kategorie);
     }
 
     public void umgebung(View view) {
-        Intent intentGame = new Intent(this, DSUmgebungActivity.class);
-        startActivity(intentGame);
+        Intent umgebung = new Intent(this, DSUmgebungActivity.class);
+        startActivity(umgebung);
     }
 }

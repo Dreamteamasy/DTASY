@@ -3,6 +3,7 @@ package at.campus02.asy.helloworld;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -20,6 +21,9 @@ public class MainActivity extends AppCompatActivity {
      * See https://g.co/AppIndexing/AndroidStudio for more information.
      */
     private GoogleApiClient client;
+    public static final String MyPREFERENCES = "MyPrefs";
+    public static final String Name = "nameKey";
+    SharedPreferences sharedPreferences;
 
     public boolean isNetworkAvailable(final Context context) {
 
@@ -34,6 +38,16 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        //Begrüßung mit Vornamen falls vorhanden
+        sharedPreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+        String aktname = aktname = sharedPreferences.getString(Name, "");
+        if(!aktname.equals("")) {
+            String infoText = "Hallo " + aktname;
+            Toast infoToast = Toast.makeText(getApplicationContext(), infoText, Toast.LENGTH_SHORT);
+            infoToast.show();
+        }
+
+        //Nachricht wenn keine Internetverbindung vorhanden ist
         if (isNetworkAvailable(getBaseContext())) {
             // code here
         } else {

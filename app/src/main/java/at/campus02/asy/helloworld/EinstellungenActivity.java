@@ -1,16 +1,11 @@
 package at.campus02.asy.helloworld;
 
-import android.app.PendingIntent;
-import android.app.TaskStackBuilder;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
-import android.support.v7.app.NotificationCompat;
-import android.view.View;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.Button;
+import android.view.View;
 import android.widget.Toast;
 
 
@@ -53,6 +48,7 @@ public class EinstellungenActivity extends AppCompatActivity {
         Toast infoToast = Toast.makeText(getApplicationContext(), infoText, Toast.LENGTH_SHORT);
         infoToast.show();
     }
+
 //um auf Einstellungen zuzugreifen
 
 //    public  void umkreisanzeigen(View view){

@@ -53,7 +53,7 @@ public class BenutzernameActivity extends AppCompatActivity {
                     editor.putString(Name, n);
                     editor.commit();
 
-                    String infoText = "Der Name '" + n + "' wurden gespeichert";
+                    String infoText = "Der Name '" + n + "' wurde gespeichert";
                     Toast infoToast = Toast.makeText(getApplicationContext(), infoText, Toast.LENGTH_SHORT);
                     infoToast.show();
 
