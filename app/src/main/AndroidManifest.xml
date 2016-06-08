@@ -82,11 +82,13 @@
         <activity
             android:name=".DSKategorieActivity"
             android:label="@string/title_activity_dskategorie"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".DSUmgebungActivity"
             android:label="@string/title_activity_dsumgebung"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
