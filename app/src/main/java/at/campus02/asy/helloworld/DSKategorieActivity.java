@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -31,9 +30,13 @@ public class DSKategorieActivity extends AppCompatActivity {
 
     private TextView tvQuestion;
     private TextView tvAnswer;
+    private TextView tvLink;
+    private TextView tvAnswerText;
+    private TextView tvLinkText;
     private Button btnVisible;
     private String frage;
     private String antwort;
+    private String bild;
     private Spinner kKategDropdown;
     private ProgressDialog progbar;
 
@@ -55,10 +58,13 @@ public class DSKategorieActivity extends AppCompatActivity {
 
         tvQuestion = (TextView) findViewById(R.id.kFrage);
         tvAnswer = (TextView) findViewById(R.id.kAntwort);
+        tvLink = (TextView) findViewById(R.id.kLink);
+        tvAnswerText = (TextView) findViewById(R.id.kAntwortTitel);
+        tvLinkText = (TextView) findViewById(R.id.kLinkTitel);
         btnVisible = (Button) findViewById(R.id.kAntwortEinblenden);
         if (btnVisible != null) {
             btnVisible.setTag(1);
-            btnVisible.setText("Antwort einblenden");
+            btnVisible.setText(R.string.einblenden);
         }
 
         //Retrofit
@@ -83,8 +89,8 @@ public class DSKategorieActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<String[]> call, Throwable t) {
                 AlertDialog.Builder alertDialog = new AlertDialog.Builder(DSKategorieActivity.this);
-                alertDialog.setMessage("Ein Fehler ist aufgetreten!");
-                alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                alertDialog.setMessage(R.string.defaultError);
+                alertDialog.setPositiveButton(R.string.okMsg, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog,int which) {
                         Intent intent = new Intent(DSKategorieActivity.this, MainActivity.class);
                         startActivity(intent);
@@ -102,8 +108,8 @@ public class DSKategorieActivity extends AppCompatActivity {
                 Collections.shuffle(list);
                 if(kKategDropdown.getSelectedItem() == null) {
                     AlertDialog.Builder alertDialog = new AlertDialog.Builder(DSKategorieActivity.this);
-                    alertDialog.setMessage("Es sind keine Kategorien vorhanden!");
-                    alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    alertDialog.setMessage(R.string.categoryError);
+                    alertDialog.setPositiveButton(R.string.okMsg, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog,int which) {
                             Intent intent = new Intent(DSKategorieActivity.this, MainActivity.class);
                             startActivity(intent);
@@ -130,15 +136,13 @@ public class DSKategorieActivity extends AppCompatActivity {
                                     result = list;
                                 }
 
-                                frage= q.Fragetext;
+                                frage = q.Fragetext;
                                 antwort = q.Antwort;
-                                if (tvQuestion != null) {
-                                    tvQuestion.setText(frage);
-                                    tvAnswer.setText(antwort);
-                                }
-                                else{
-                                    Log.v("DSAlleFragenActivity", "Fehler aufgetreten");
-                                }
+                                bild = q.Bild;
+
+                                tvQuestion.setText(frage);
+                                tvAnswer.setText(antwort);
+                                tvLink.setText(bild);
                             }
                         }
                     }
@@ -153,8 +157,8 @@ public class DSKategorieActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<List<Question>> call, Throwable t) {
                 AlertDialog.Builder alertDialog = new AlertDialog.Builder(DSKategorieActivity.this);
-                alertDialog.setMessage("Ein Fehler ist aufgetreten!");
-                alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                alertDialog.setMessage(R.string.defaultError);
+                alertDialog.setPositiveButton(R.string.okMsg, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog,int which) {
                         Intent intent = new Intent(DSKategorieActivity.this, MainActivity.class);
                         startActivity(intent);
@@ -169,13 +173,19 @@ public class DSKategorieActivity extends AppCompatActivity {
     public void kAntwortEinblenden(View view) {
         final int status =(Integer) view.getTag();
         if(status == 1) {
-            btnVisible.setText("Antwort ausblenden");
+            btnVisible.setText(R.string.ausblenden);
             tvAnswer.setVisibility(View.VISIBLE);
-            view.setTag(0); //pause
+            tvAnswerText.setVisibility(View.VISIBLE);
+            tvLink.setVisibility(View.VISIBLE);
+            tvLinkText.setVisibility(View.VISIBLE);
+            view.setTag(0);
         } else {
-            btnVisible.setText("Antwort einblenden");
+            btnVisible.setText(R.string.einblenden);
             tvAnswer.setVisibility(View.INVISIBLE);
-            view.setTag(1); //pause
+            tvAnswerText.setVisibility(View.INVISIBLE);
+            tvLink.setVisibility(View.INVISIBLE);
+            tvLinkText.setVisibility(View.INVISIBLE);
+            view.setTag(1);
         }
     }
 
@@ -187,7 +197,7 @@ public class DSKategorieActivity extends AppCompatActivity {
 
     private void laden(){
         progbar = new ProgressDialog(this);
-        progbar.setMessage("Die nächste Frage wird geladen");
+        progbar.setMessage(getString(R.string.nextQuestionMsg));
         progbar.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
         progbar.setIndeterminate(true);
         progbar.setProgress(0);

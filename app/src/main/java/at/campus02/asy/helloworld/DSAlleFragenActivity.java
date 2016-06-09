@@ -10,10 +10,9 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
+import android.text.method.LinkMovementMethod;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -33,9 +32,13 @@ public class DSAlleFragenActivity extends AppCompatActivity
 {
     private TextView tvQuestion;
     private TextView tvAnswer;
+    private TextView tvLink;
+    private TextView tvAnswerText;
+    private TextView tvLinkText;
     private Button btnVisible;
     private String frage;
     private String antwort;
+    private String bild;
     private ProgressDialog progbar;
     private int round;
     public static final String MyPREFERENCES = "MyPrefs";
@@ -50,7 +53,6 @@ public class DSAlleFragenActivity extends AppCompatActivity
         setContentView(R.layout.activity_detailscreen);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        Log.v("DSAlleFragenActivity", "Fehler aufgetreten");
 
         /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         assert fab != null;
@@ -64,10 +66,13 @@ public class DSAlleFragenActivity extends AppCompatActivity
 
         tvQuestion = (TextView) findViewById(R.id.frage);
         tvAnswer = (TextView) findViewById(R.id.antwort);
+        tvLink = (TextView) findViewById(R.id.link);
+        tvAnswerText = (TextView) findViewById(R.id.antwortTitel);
+        tvLinkText = (TextView) findViewById(R.id.linkTitel);
         btnVisible = (Button) findViewById(R.id.antwortEinblenden);
         if (btnVisible != null) {
             btnVisible.setTag(1);
-            btnVisible.setText("Antwort einblenden");
+            btnVisible.setText(R.string.einblenden);
         }
 
 
@@ -96,23 +101,22 @@ public class DSAlleFragenActivity extends AppCompatActivity
 
                 for(Question q: result)
                 {
-                    frage= q.Fragetext;
+                    frage = q.Fragetext;
                     antwort = q.Antwort;
-                    if (tvQuestion != null) {
-                        tvQuestion.setText(frage);
-                        tvAnswer.setText(antwort);
-                    }
-                    else{
-                        Log.v("DSAlleFragenActivity", "Fehler aufgetreten");
-                    }
+                    bild = q.Bild;
+
+                    tvQuestion.setText(frage);
+                    tvAnswer.setText(antwort);
+                    tvLink.setText(bild);
+                    tvLink.setMovementMethod(LinkMovementMethod.getInstance());
                 }
             }
 
             @Override
             public void onFailure(Call<List<Question>> call, Throwable t) {
                 AlertDialog.Builder alertDialog = new AlertDialog.Builder(DSAlleFragenActivity.this);
-                alertDialog.setMessage("Ein Fehler ist aufgetreten!");
-                alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                alertDialog.setMessage(R.string.defaultError);
+                alertDialog.setPositiveButton(R.string.okMsg, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog,int which) {
                         Intent intent = new Intent(DSAlleFragenActivity.this, MainActivity.class);
                         startActivity(intent);
@@ -126,13 +130,19 @@ public class DSAlleFragenActivity extends AppCompatActivity
     public void antwortEinblenden(View view) {
         final int status =(Integer) view.getTag();
         if(status == 1) {
-            btnVisible.setText("Antwort ausblenden");
+            btnVisible.setText(R.string.ausblenden);
             tvAnswer.setVisibility(View.VISIBLE);
-            view.setTag(0); //pause
+            tvAnswerText.setVisibility(View.VISIBLE);
+            tvLink.setVisibility(View.VISIBLE);
+            tvLinkText.setVisibility(View.VISIBLE);
+            view.setTag(0);
         } else {
-            btnVisible.setText("Antwort einblenden");
+            btnVisible.setText(R.string.einblenden);
             tvAnswer.setVisibility(View.INVISIBLE);
-            view.setTag(1); //pause
+            tvAnswerText.setVisibility(View.INVISIBLE);
+            tvLink.setVisibility(View.INVISIBLE);
+            tvLinkText.setVisibility(View.INVISIBLE);
+            view.setTag(1);
         }
     }
 
@@ -153,8 +163,8 @@ public class DSAlleFragenActivity extends AppCompatActivity
             startActivity(alleFragen);
         } else {
             AlertDialog.Builder alertDialog = new AlertDialog.Builder(DSAlleFragenActivity.this);
-            alertDialog.setMessage("Das Spiel ist vorbei");
-            alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            alertDialog.setMessage(R.string.gameEndMsg);
+            alertDialog.setPositiveButton(R.string.okMsg, new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int which) {
                     Intent intent = new Intent(DSAlleFragenActivity.this, MainActivity.class);
                     startActivity(intent);
@@ -166,7 +176,7 @@ public class DSAlleFragenActivity extends AppCompatActivity
 
     private void laden(){
         progbar = new ProgressDialog(this);
-        progbar.setMessage("Die nächste Frage wird geladen");
+        progbar.setMessage(getString(R.string.nextQuestionMsg));
         progbar.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
         progbar.setIndeterminate(true);
         progbar.setProgress(0);

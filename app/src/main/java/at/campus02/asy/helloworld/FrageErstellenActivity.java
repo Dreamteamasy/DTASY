@@ -9,7 +9,6 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -78,8 +77,17 @@ public class FrageErstellenActivity extends AppCompatActivity {
                 String[] kategorienTmp = response.body();
                 ArrayList<String> kategorien = new ArrayList<String>();
                 for(String aktWert : kategorienTmp){
-                    if(aktWert != null){
+                    if(aktWert != null && !aktWert.equals("")){
                         kategorien.add(aktWert);
+                    }
+                    else{
+                        AlertDialog.Builder alertDialog = new AlertDialog.Builder(FrageErstellenActivity.this);
+                        alertDialog.setMessage(R.string.categoryError);
+                        alertDialog.setPositiveButton(R.string.okMsg, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog,int which) {
+                            }
+                        });
+                        alertDialog.show();
                     }
                 }
 
@@ -92,8 +100,8 @@ public class FrageErstellenActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<String[]> call, Throwable t) {
                 AlertDialog.Builder alertDialog = new AlertDialog.Builder(FrageErstellenActivity.this);
-                alertDialog.setMessage("Ein Fehler ist aufgetreten!");
-                alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                alertDialog.setMessage(R.string.defaultError);
+                alertDialog.setPositiveButton(R.string.okMsg, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog,int which) {
                         Intent intent = new Intent(FrageErstellenActivity.this, MainActivity.class);
                         startActivity(intent);
@@ -181,12 +189,12 @@ public class FrageErstellenActivity extends AppCompatActivity {
         question.Bild = etBild.getText().toString();
 
         if(etFrage.getText().toString().equals("") || etAntwort.getText().toString().equals("") || etSchwierigkeitsgrad.getText().toString().equals("") || question == null) {
-            Toast infoToast = Toast.makeText(getApplicationContext(), "Bitte alle Felder ausfüllen!", Toast.LENGTH_SHORT);
+            Toast infoToast = Toast.makeText(getApplicationContext(), R.string.notNullMsg, Toast.LENGTH_SHORT);
             infoToast.show();
 
             /*AlertDialog.Builder alertDialog = new AlertDialog.Builder(FrageErstellenActivity.this);
-            alertDialog.setMessage("Bitte alle Felder ausfüllen!");
-            alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            alertDialog.setMessage(R.string.defaultError);
+            alertDialog.setPositiveButton(R.string.okMsg, new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog,int which) {
                 }
             });
@@ -201,8 +209,8 @@ public class FrageErstellenActivity extends AppCompatActivity {
                 @Override
                 public void onFailure(Call<String> call, Throwable t) {
                     AlertDialog.Builder alertDialog = new AlertDialog.Builder(FrageErstellenActivity.this);
-                    alertDialog.setMessage("Ein Fehler ist aufgetreten!");
-                    alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    alertDialog.setMessage(R.string.defaultError);
+                    alertDialog.setPositiveButton(R.string.okMsg, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog,int which) {
                             Intent intent = new Intent(FrageErstellenActivity.this, MainActivity.class);
                             startActivity(intent);
@@ -213,28 +221,9 @@ public class FrageErstellenActivity extends AppCompatActivity {
             });
             Intent intentGame = new Intent(this, MainActivity.class);
             startActivity(intentGame);
+            Toast infoToast = Toast.makeText(getApplicationContext(),
+                    R.string.successfulCreationMsg, Toast.LENGTH_LONG);
+            infoToast.show();
         }
     }
 }
-
-/*            @Override
-            public void onFailure(Call<String> call, Throwable t) {
-                AlertDialog.Builder alertDialog = new AlertDialog.Builder(FrageErstellenActivity.this);
-                alertDialog.setMessage("Ein Fehler ist aufgetreten!");
-                alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog,int which) {
-                        Intent intent = new Intent(FrageErstellenActivity.this, MainActivity.class);
-                        startActivity(intent);
-                    }
-                });
-                alertDialog.show();
-            }
-        });
-
-        Intent intentGame = new Intent(this, MainActivity.class);
-        startActivity(intentGame);
-        Toast errorToast = Toast.makeText(getApplicationContext(),
-                "Frage erstellt", Toast.LENGTH_LONG);
-        errorToast.show();
-    }
-}*/

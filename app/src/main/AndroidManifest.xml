@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="at.campus02.asy.helloworld">
+    package="at.campus02.asy.helloworld" >
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -8,7 +8,6 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
 
     <!-- permission  internet access webView -->
     <uses-permission android:name="android.permission.INTERNET" />
@@ -18,17 +17,19 @@
         android:icon="@mipmap/studying_app_icon"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme" >
 
         <!-- android:icon="@mipmap/dt_app_icon" -->
-    <!-- android:icon="@mipmap/dt_app_icon"
-        android:icon="@drawable/campus02_logo"-->
+        <!--
+         android:icon="@mipmap/dt_app_icon"
+        android:icon="@drawable/campus02_logo"
+        -->
 
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -37,7 +38,7 @@
         </activity>
         <activity
             android:name=".FrageAnzeigenActivity"
-            android:label="@string/app_name"
+            android:label="@string/frage_anteigen_activity"
             android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait" />
         <!--
@@ -65,30 +66,34 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".MaxFragenActivity"
+            android:label="@string/max_fragen_activity"
             android:parentActivityName=".EinstellungenActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".BenutzernameActivity"
+            android:label="@string/benutzername_activity"
             android:parentActivityName=".EinstellungenActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".SchwierigkeitsgradActivity"
+            android:label="@string/schwierigkeitsgrad_activity"
             android:parentActivityName=".EinstellungenActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".UmkreisActivity"
+            android:label="@string/umkreis_activity"
             android:parentActivityName=".EinstellungenActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".DSKategorieActivity"
             android:label="@string/title_activity_dskategorie"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".DSUmgebungActivity"
             android:label="@string/title_activity_dsumgebung"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

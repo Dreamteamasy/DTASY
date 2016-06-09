@@ -89,11 +89,25 @@
     <string name="pref_ringtone_silent">Silent</string>
 
     <string name="pref_title_vibrate">Vibrate</string>
-    <string name="title_activity_detailscreen">Detailscreen</string>
+    <string name="title_activity_detailscreen">Alle Fragen</string>
     <string name="title_activity_frage_erstellen">Frage erstellen</string>
     <string name="title_activity_settings">Einstellungen</string>
-    <string name="title_activity_dskategorie">DSKategorieActivity</string>
-    <string name="title_activity_dsumgebung">DSUmgebungActivity</string>
+    <string name="title_activity_dskategorie">Fragen zu einer Kategorie</string>
+    <string name="title_activity_dsumgebung">Umgebungs-Einstellungen</string>
     <string name="schwierigkeitsgrade">0 (leicht), 1 (mittel), 2 (schwer), 3 (sehr schwer)</string>
+    <string name="defaultError">Ein Fehler ist aufgetreten!</string>
+    <string name="categoryError">Keine Kategorien verfügbar!</string>
+    <string name="nextQuestionMsg">Die nächste Frage wird geladen</string>
+    <string name="gameEndMsg">Das Spiel ist vorbei</string>
+    <string name="notNullMsg">Bitte alle Felder ausfüllen!</string>
+    <string name="successfulCreationMsg">Frage erfolgreich erstellt</string>
+    <string name="okMsg">OK</string>
+    <string name="antwortTitel">Antwort:</string>
+    <string name="linkZumBild">Link zum Bild:</string>
+    <string name="frage_anteigen_activity">Fragen anzeigen</string>
+    <string name="max_fragen_activity">Anzahl der Fragen</string>
+    <string name="benutzername_activity">Benutzername</string>
+    <string name="schwierigkeitsgrad_activity">Schwierigkeitsgrad</string>
+    <string name="umkreis_activity">Umkreis</string>
 
 </resources>

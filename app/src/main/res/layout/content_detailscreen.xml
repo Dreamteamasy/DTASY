@@ -43,33 +43,73 @@
                 android:onClick="antwortEinblenden" />
 
             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/antwortTitel"
+                android:id="@+id/antwortTitel"
+                android:textSize="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/antwortEinblenden"
+                android:textStyle="bold|italic"
+                android:visibility="invisible"/>
+
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/antwort"
                 style="@style/QuestionText"
                 android:paddingTop="20dp"
                 android:paddingBottom="20dp"
-                android:layout_marginTop="30dp"
-                android:layout_below="@+id/antwortEinblenden"
+                android:layout_below="@+id/antwortTitel"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
                 android:visibility="invisible"
                 android:textSize="25dp" />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/linkZumBild"
+                android:id="@+id/linkTitel"
+                android:textSize="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/antwort"
+                android:textStyle="bold|italic"
+                android:visibility="invisible"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/link"
+                style="@style/QuestionText"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+                android:layout_below="@+id/linkTitel"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:visibility="invisible"
+                android:textSize="25dp"
+                android:autoLink="web"/>
+
             <Button
                 android:layout_width="250dp"
-                android:layout_height="70dp"
+                android:layout_height="wrap_content"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
                 android:text="@string/next"
                 android:id="@+id/next"
                 android:layout_marginTop="10dp"
                 android:textSize="20dp"
-                android:layout_below="@+id/antwort"
+                android:layout_below="@+id/link"
                 android:layout_centerHorizontal="true"
                 android:onClick="next"
                 />
+
             <Button
                 android:layout_width="250dp"
-                android:layout_height="70dp"
+                android:layout_height="wrap_content"
                 android:text="@string/backToMain"
                 android:id="@+id/backToMain"
                 android:layout_marginTop="5dp"
